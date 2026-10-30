@@ -1,0 +1,13 @@
+
+=== Gate compliance ===
+log    stage      G4    G5    G7    G8    G9   G10   G11    FS
+A      stage1   PASS  PASS  PASS   N/A  PASS   N/A   N/A   N/A
+B0     stage2   PASS  PASS  PASS   N/A  PASS   N/A   N/A   N/A
+B      stage2   PASS  PASS   N/A   N/A   N/A  PASS  PASS   N/A
+C1     stage2   PASS  PASS   N/A   N/A   N/A   N/A   N/A  PASS
+C2     stage2   PASS  PASS   N/A   N/A   N/A   N/A   N/A  PASS
+C3     stage2   PASS  PASS   N/A   N/A   N/A   N/A   N/A  PASS
+D      stage2   PASS  PASS  PASS   N/A  PASS   N/A   N/A   N/A
+
+Overall: {'G4_vibration': 'PASS', 'G5_G6_hover_and_trim': 'PASS', 'G7_alt_hold': 'PASS', 'G8_autotune': 'N/A', 'G9_loiter': 'PASS', 'G10_auto_waypoints_and_gear': 'PASS', 'G11_mission_battery_reserve': 'PASS', 'FS_failsafe_response': 'PASS'}
+Saved C:\Users\udhav\UAV-Design\outputs\logs\gate_compliance_report.json and outputs/plots/fig8_flight_log_gate_verification.png

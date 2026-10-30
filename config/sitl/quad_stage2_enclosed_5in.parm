@@ -1,0 +1,114 @@
+# Project 8 - ArduPilot SITL parameter file - STAGE 2 ENCLOSED 5-inch ducted quad, RETRACTABLE LEGS (1.905 kg)
+# Self-contained SITL file: do NOT also load config/ardupilot/*.param (board-specific SERIAL3/6 settings
+# would disable the SITL GPS on SERIAL3).
+#
+# Run from the ardupilot source tree (Linux/WSL), IIITH sports-ground home 17.4455,78.3489,540 m ASL, heading 0:
+#   Tools/autotest/sim_vehicle.py -v ArduCopter -f quad --model "quad:/abs/path/UAV-Design/config/sitl/project8_5in_enclosed.json" \
+#       --custom-location=17.4455,78.3489,540,0 -w \
+#       --add-param-file=/abs/path/UAV-Design/config/sitl/quad_stage2_enclosed_5in.parm --console --map
+# Then at the MAVProxy prompt:
+#   wp load /abs/path/UAV-Design/missions/iiith_5in_enclosed_mission.waypoints
+#   mode GUIDED ; arm throttle ; mode AUTO ; rc 3 1500      (AUTO start)
+# Failsafe drills:  param set SIM_RC_FAIL 1   -> expect RTL (FS_THR)        ; param set SIM_RC_FAIL 0 to restore
+#                   param set SIM_BATT_VOLTAGE 20.5 -> expect BATT low -> RTL ; 19.5 -> critical -> LAND
+#                   fly LOITER past 120 m radius or above 40 m             -> expect FENCE breach -> RTL
+# If your ArduPilot build rejects the frame JSON path, omit --model (stock quad physics; logic-only test).
+# VERSION NOTES: SIM_GPS_* -> SIM_GPS1_* in 4.6; SIM_ACC1_RND/SIM_GYR1_RND are the 4.x per-IMU names.
+
+# ---------------- Simulated environment (design case: 15 km/h crosswind + turbulence) ----------------
+SIM_BATT_VOLTAGE,25.2
+SIM_BATT_CAP_AH,2.6
+# 15 km/h = 4.17 m/s from the west (crosswind on the N-S mission legs)
+SIM_WIND_SPD,4.17
+SIM_WIND_DIR,270
+SIM_WIND_TURB,1.5
+SIM_ESC_TELEM,1
+SIM_ACC1_RND,0.8
+SIM_GYR1_RND,0.08
+SIM_VIB_MOT_MAX,250
+SIM_BARO_RND,0.1
+SIM_GPS_NUMSATS,14
+SIM_GPS_HDOP,90
+SIM_GPS_NOISE,0.3
+
+# ---------------- Vehicle (mirrors stage2_enclosed_5in_legs.param, minus board-specific I/O) ----------------
+FRAME_CLASS,1
+FRAME_TYPE,1
+MOT_SPIN_ARM,0.07
+MOT_SPIN_MIN,0.12
+MOT_SPIN_MAX,0.95
+MOT_THST_EXPO,0.65
+MOT_THST_HOVER,0.35
+MOT_HOVER_LEARN,2
+MOT_BAT_VOLT_MAX,25.2
+MOT_BAT_VOLT_MIN,19.8
+MOT_BAT_CURR_MAX,160
+BATT_MONITOR,4
+BATT_CAPACITY,2600
+BATT_LOW_VOLT,21.0
+BATT_CRT_VOLT,19.8
+BATT_FS_VOLTSRC,1
+BATT_LOW_MAH,780
+BATT_CRT_MAH,450
+BATT_FS_LOW_ACT,2
+BATT_FS_CRT_ACT,1
+INS_HNTCH_ENABLE,1
+INS_HNTCH_MODE,3
+INS_HNTCH_REF,1
+INS_HNTCH_FREQ,255
+INS_HNTCH_BW,128
+INS_HNTCH_ATT,40
+INS_HNTCH_HMNCS,5
+INS_GYRO_FILTER,70
+ATC_RAT_RLL_P,0.12
+ATC_RAT_RLL_I,0.12
+ATC_RAT_RLL_D,0.0030
+ATC_RAT_PIT_P,0.12
+ATC_RAT_PIT_I,0.12
+ATC_RAT_PIT_D,0.0030
+ATC_RAT_YAW_P,0.15
+ATC_RAT_YAW_I,0.015
+ATC_ACCEL_R_MAX,36000
+ATC_ACCEL_P_MAX,36000
+ATC_ACCEL_Y_MAX,9000
+ATC_RATE_Y_MAX,60
+ANGLE_MAX,3000
+LOIT_SPEED,350
+WPNAV_SPEED,350
+WPNAV_ACCEL,120
+WPNAV_RADIUS,100
+RTL_ALT,1500
+RTL_SPEED,300
+LAND_SPEED,40
+FS_THR_ENABLE,1
+FS_THR_VALUE,975
+FS_GCS_ENABLE,1
+FS_EKF_ACTION,1
+FENCE_ENABLE,1
+FENCE_TYPE,7
+FENCE_ACTION,1
+FENCE_RADIUS,120
+FENCE_ALT_MAX,40
+FLTMODE_CH,5
+FLTMODE1,0
+FLTMODE2,2
+FLTMODE3,5
+FLTMODE4,3
+FLTMODE5,6
+FLTMODE6,9
+RC7_OPTION,31
+RC8_OPTION,29
+GPS_HDOP_GOOD,140
+# Landing gear on SITL outputs 5/6
+SERVO5_FUNCTION,29
+SERVO6_FUNCTION,29
+SERVO5_MIN,1100
+SERVO5_MAX,1900
+SERVO6_MIN,1100
+SERVO6_MAX,1900
+LGR_DEPLOY_ALT,3
+LGR_RETRACT_ALT,5
+LGR_OPTIONS,3
+LGR_STARTUP,2
+LOG_BITMASK,176126
+AUTOTUNE_AXES,3

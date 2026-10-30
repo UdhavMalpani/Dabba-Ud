@@ -1,0 +1,234 @@
+# Project 8 - Team 4 - ArduCopter 4.5.x/4.6.x - SpeedyBee F405 V4 (board target: speedybeef4v4)
+# STAGE 1: BARE 5-inch quad, open props, ~1.13 kg AUW (no ducts/enclosure; ballast optional)
+# Emax ECO II 2207 1700KV, HQ/Gemfan 5x4.3x3, SpeedyBee BLS 60A 4-in-1 (Bluejay), 6S 2600 mAh 65C XT90
+# Matek M10Q-5883 GPS+compass, lab RC (SBUS/CRSF) + lab telemetry radio (433 or 865 MHz), RunCam Thumb (record-only)
+#
+# HOW TO LOAD (Mission Planner > Config > Full Parameter List > Load from file > Write Params):
+#   1) Load + write, REBOOT, then load + write AGAIN. INS_HNTCH_* and some BATT_* params only appear
+#      after their ENABLE/MONITOR parent is set and the board reboots ("param not found" on pass 1 is expected).
+#   2) Do accel, compass and radio calibration AFTER loading. ESC calibration is NOT needed for DShot.
+#   3) Any line Mission Planner reports as unknown: see the "VERSION NOTES" comments next to it.
+# Format: NAME,VALUE. Comments are on their own lines (no inline comments, for MP + SITL parser safety).
+#
+# UART/OUTPUT ASSUMPTIONS (MUST be checked against https://ardupilot.org/copter/docs/common-speedybeef405v4.html):
+#   SERIAL1 = UART1 (T1/R1 pads)            -> telemetry radio, MAVLink2 @ 57600
+#   SERIAL2 = UART2 (R2 / "SBUS" pad)       -> RC receiver (protocol 23 = RCIN, auto-detect SBUS/CRSF/iBus/SRXL)
+#   SERIAL3 = UART3 (DJI/HD VTX connector)  -> unused (RunCam Thumb is record-only) -> disabled
+#   SERIAL4 = UART4                          -> on-board Bluetooth bridge (left at board default)
+#   SERIAL5 = UART5 (R5 in 8-pin ESC plug)  -> ESC serial telemetry: BLHeli_S/Bluejay has none -> disabled
+#   SERIAL6 = UART6 (T6/R6 "GPS" pads)      -> Matek M10Q-5883 GPS; compass on the SDA/SCL pads (I2C)
+#   SERVO1-4 = M1-M4 via 8-pin ESC harness (DShot600 + bidirectional DShot RPM)
+#   SERVO5-6 = M5/M6 pads (unused in Stage 1; landing gear in the legs file)
+
+# ---------------- Frame & motor outputs ----------------
+FRAME_CLASS,1
+# 1 = X
+FRAME_TYPE,1
+# Output remap: SpeedyBee ESC harness follows Betaflight order (M1 RR, M2 FR, M3 RL, M4 FL).
+# ArduPilot X order is Motor1 FR, Motor2 RL, Motor3 FL, Motor4 RR. Function 33..36 = Motor1..Motor4.
+# If you instead wire motors in ArduPilot order, set SERVO1..4_FUNCTION = 33,34,35,36.
+# VERIFY with Mission Planner Motor Test (A=FR, B=RR, C=RL, D=FL, props OFF).
+SERVO1_FUNCTION,36
+SERVO2_FUNCTION,33
+SERVO3_FUNCTION,34
+SERVO4_FUNCTION,35
+SERVO5_FUNCTION,0
+SERVO6_FUNCTION,0
+# 6 = DShot600. If bdshot RPM is unreliable on the F405, drop to 5 (DShot300).
+MOT_PWM_TYPE,6
+# Bidirectional DShot on outputs 1-4 (bitmask 0b1111). REQUIRES Bluejay firmware flashed on the BLS 60A (BLHeli_S stock = no RPM).
+SERVO_BLH_BDMASK,15
+# Enable BLHeli passthrough for outputs 1-4 (Bluejay Configurator / BLHeliSuite via MP passthrough)
+SERVO_BLH_AUTO,1
+# Emax ECO II 2207 = 12N14P -> 14 magnet poles (needed to convert eRPM to RPM)
+SERVO_BLH_POLES,14
+# 1 = BLHeli32/BLHeli_S/Kiss-style DShot commands (beeps, direction). VERIFY value list in your FW version (4.5+ added EDT options).
+SERVO_DSHOT_ESC,1
+# Spin when armed / minimum in-flight / max: 5" Bluejay idles cleanly at ~6-7%.
+MOT_SPIN_ARM,0.07
+MOT_SPIN_MIN,0.10
+MOT_SPIN_MAX,0.95
+# Thrust curve expo: ~0.65 is typical for 5" props on DShot (ArduPilot initial-params calculator for 5" gives 0.65-0.70)
+MOT_THST_EXPO,0.65
+# Bare quad hover throttle (plan value). 4 x 283 gf hover vs ~1.76 kgf/motor max at 540 m -> ~0.16-0.22.
+MOT_THST_HOVER,0.20
+# 2 = learn hover throttle and save it (feeds Gate 5 hover-current comparison)
+MOT_HOVER_LEARN,2
+# Voltage compensation of thrust for 6S: 4.20 V x6 / 3.30 V x6
+MOT_BAT_VOLT_MAX,25.2
+MOT_BAT_VOLT_MIN,19.8
+# Current limit: 4 x 40 A full-throttle = 160 A = pack limit 2.6 Ah x 65C = 169 A
+MOT_BAT_CURR_MAX,160
+MOT_BAT_IDX,0
+
+# ---------------- Battery monitor (FC voltage pad + BLS ESC current pad) ----------------
+# 4 = analog voltage + current. Pin numbers come from the speedybeef4v4 hwdef defaults - do not override.
+BATT_MONITOR,4
+BATT_CAPACITY,2600
+# Betaflight "scale 400" for the BLS ESC current output = 40 mV/A = 25 A/V in ArduPilot. CALIBRATE: compare mAh
+# consumed vs mAh put back by the charger over 2-3 flights and scale this value by (charged/logged).
+BATT_AMP_PERVLT,25.0
+BATT_AMP_OFFSET,0.0
+# BATT_VOLT_MULT left at board default (hwdef ~11.0); CALIBRATE against a multimeter in MP > Battery Monitor.
+# Thresholds (per cell 3.50 / 3.30 V), sag-compensated (BATT_FS_VOLTSRC=1)
+BATT_LOW_VOLT,21.0
+BATT_CRT_VOLT,19.8
+BATT_FS_VOLTSRC,1
+BATT_LOW_TIMER,10
+# Capacity reserve: LOW at 30% of 2600 (780 mAh) -> RTL with time to land >= 25%; CRITICAL at ~17% (450 mAh) -> Land now
+BATT_LOW_MAH,780
+BATT_CRT_MAH,450
+# 2 = RTL on low, 1 = Land on critical
+BATT_FS_LOW_ACT,2
+BATT_FS_CRT_ACT,1
+# Refuse to arm below 3.85 V/cell (23.1 V) - avoids taking off on a part-used pack
+BATT_ARM_VOLT,23.1
+
+# ---------------- Harmonic notch (gyro) ----------------
+INS_HNTCH_ENABLE,1
+# 3 = ESC telemetry / bidirectional-DShot RPM tracking (needs Bluejay + SERVO_BLH_BDMASK).
+# FALLBACK if no RPM data: INS_HNTCH_MODE,1 (throttle-based) and INS_HNTCH_REF = MOT_THST_HOVER (0.20).
+INS_HNTCH_MODE,3
+# REF = 1 for RPM/ESC-telemetry modes (scaling factor)
+INS_HNTCH_REF,1
+# Bare hover: 283 gf/motor -> ~12,000 RPM -> 200 Hz motor rotation frequency. BW = FREQ/2.
+INS_HNTCH_FREQ,200
+INS_HNTCH_BW,100
+INS_HNTCH_ATT,40
+# Harmonics bitmask: 1st (imbalance) + 3rd (tri-blade blade-pass) = 1 + 4 = 5
+INS_HNTCH_HMNCS,5
+# 0 = single notch from averaged RPM (F405 CPU-safe). Per-motor notches (OPTS bit "multi-source"=2) only if CPU load allows.
+INS_HNTCH_OPTS,0
+# Gyro low-pass: 5" initial-params formula 289.22*D^-0.838 ~ 75-80 Hz
+INS_GYRO_FILTER,80
+INS_ACCEL_FILTER,20
+# Batch sampler for FFT analysis of Gate 4 logs (disable after tuning to save SD bandwidth)
+INS_LOG_BAT_MASK,1
+INS_LOG_BAT_OPT,2
+
+# ---------------- Attitude / rate control (LOW initial gains for a twitchy 5" bare quad) ----------------
+# Plan value 0.085 (ArduCopter default 0.135 is too hot for a light 5" at T/W ~6). Autotune (Gate 8) replaces these.
+ATC_RAT_RLL_P,0.085
+ATC_RAT_RLL_I,0.085
+ATC_RAT_RLL_D,0.0018
+ATC_RAT_RLL_FLTD,40
+ATC_RAT_RLL_FLTT,40
+ATC_RAT_PIT_P,0.085
+ATC_RAT_PIT_I,0.085
+ATC_RAT_PIT_D,0.0018
+ATC_RAT_PIT_FLTD,40
+ATC_RAT_PIT_FLTT,40
+ATC_RAT_YAW_P,0.18
+ATC_RAT_YAW_I,0.018
+ATC_RAT_YAW_D,0.0
+ATC_RAT_YAW_FLTE,2
+# Accel limits in centideg/s^2. Bare 5" can do far more; capped low for first flights by inexperienced pilots.
+ATC_ACCEL_R_MAX,72000
+ATC_ACCEL_P_MAX,72000
+ATC_ACCEL_Y_MAX,18000
+ATC_RATE_R_MAX,360
+ATC_RATE_P_MAX,360
+ATC_RATE_Y_MAX,180
+ATC_INPUT_TC,0.15
+# 35 deg lean limit (centidegrees). VERSION NOTE: renamed in some 4.6+/4.7 builds - check if MP rejects it.
+ANGLE_MAX,3500
+
+# ---------------- Pilot / nav ----------------
+PILOT_SPEED_UP,250
+PILOT_SPEED_DN,150
+PILOT_ACCEL_Z,250
+LOIT_SPEED,500
+LOIT_ACC_MAX,300
+WPNAV_SPEED,350
+WPNAV_ACCEL,120
+WPNAV_SPEED_UP,150
+WPNAV_SPEED_DN,100
+WPNAV_RADIUS,100
+# Hold heading on mission legs: yaw is the weakest axis in a ducted box (reaction torque only), so do not spend it turning to face each waypoint
+WP_YAW_BEHAVIOR,0
+RTL_ALT,1000
+RTL_SPEED,300
+RTL_ALT_FINAL,0
+RTL_LOIT_TIME,3000
+LAND_SPEED,40
+LAND_ALT_LOW,1000
+
+# ---------------- Failsafes ----------------
+# RC loss -> RTL. Set the receiver failsafe to "no pulses" (preferred) or throttle < 975 us.
+FS_THR_ENABLE,1
+FS_THR_VALUE,975
+# GCS link loss -> RTL in AUTO/GUIDED (FS_OPTIONS default lets manual modes continue)
+FS_GCS_ENABLE,1
+# EKF failsafe -> Land
+FS_EKF_ACTION,1
+FS_EKF_THRESH,0.8
+FS_CRASH_CHECK,1
+FS_VIBE_ENABLE,1
+# Geofence: 7 = max altitude + circle + polygon, 1 = RTL (or Land if RTL impossible)
+FENCE_ENABLE,1
+FENCE_TYPE,7
+FENCE_ACTION,1
+FENCE_RADIUS,100
+FENCE_ALT_MAX,30
+FENCE_MARGIN,2
+
+# ---------------- RC & flight modes ----------------
+# RC input on UART2 (SBUS pad / R2). 23 = RCIN.
+SERIAL2_PROTOCOL,23
+RCMAP_ROLL,1
+RCMAP_PITCH,2
+RCMAP_THROTTLE,3
+RCMAP_YAW,4
+FLTMODE_CH,5
+# 0 STABILIZE, 2 ALT_HOLD, 5 LOITER, 15 AUTOTUNE, 6 RTL, 9 LAND
+FLTMODE1,0
+FLTMODE2,2
+FLTMODE3,5
+FLTMODE4,15
+FLTMODE5,6
+FLTMODE6,9
+# CH7 = Motor Emergency Stop (31) - pilot kill switch, always within reach
+RC7_OPTION,31
+ARMING_CHECK,1
+ARMING_RUDDER,2
+DISARM_DELAY,10
+# No hardware safety switch on the SpeedyBee stack
+BRD_SAFETY_DEFLT,0
+
+# ---------------- GPS & compass ----------------
+# VERSION NOTE: ArduPilot 4.6 renamed GPS_TYPE/GPS_GNSS_MODE -> GPS1_TYPE/GPS1_GNSS_MODE (MP may auto-migrate on upgrade).
+# 4.6 equivalents if rejected:  GPS1_TYPE,1   GPS1_GNSS_MODE,15
+SERIAL6_PROTOCOL,5
+SERIAL6_BAUD,230
+GPS_TYPE,1
+GPS_AUTO_CONFIG,1
+# M10: GPS(1)+SBAS(2)+Galileo(4)+BeiDou(8)=15 (M10 max 4 concurrent systems). Use 0 to keep receiver default if fix is poor.
+GPS_GNSS_MODE,15
+GPS_SBAS_MODE,1
+GPS_HDOP_GOOD,140
+COMPASS_ENABLE,1
+COMPASS_USE,1
+COMPASS_AUTODEC,1
+# Matek M10Q-5883 (QMC5883L) mounted arrow-forward: orientation 0 assumed; AUTO_ROT=2 lets calibration detect/fix it
+COMPASS_ORIENT,0
+COMPASS_AUTO_ROT,2
+
+# ---------------- Telemetry & other serial ports ----------------
+# Lab telemetry radio on UART1: 2 = MAVLink2, 57 = 57600 baud (match the radio's serial speed)
+SERIAL1_PROTOCOL,2
+SERIAL1_BAUD,57
+# UART3 (HD VTX connector) unused
+SERIAL3_PROTOCOL,-1
+# UART5 = ESC telemetry line in the 8-pin harness: BLHeli_S/Bluejay sends RPM via bdshot, not serial -> disabled
+SERIAL5_PROTOCOL,-1
+
+# ---------------- Logging ----------------
+# Default Copter bitmask (ATTITUDE_MED, GPS, PM, CTUN, NTUN, RCIN, IMU, CMD, CURRENT, RCOUT, OPTFLOW, COMPASS, MOTBATT...)
+LOG_BITMASK,176126
+LOG_BACKEND_TYPE,1
+LOG_DISARMED,0
+
+# ---------------- Autotune ----------------
+# 7 = roll + pitch + yaw
+AUTOTUNE_AXES,7
+AUTOTUNE_AGGR,0.1

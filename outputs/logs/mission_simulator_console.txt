@@ -1,0 +1,223 @@
+Vehicle: Stage 1 Bare Quad (open props, legs, 180 g payload): m = 1.1310 kg, I = (0.00537267, 0.00736041, 0.00651905) kg m^2 [mass_cg_inertia_audit.json (/inertia_headline/stage 1 bare (legs down, payload in))], thrust mult = 1.0, Tmax @21.5 V = 1.414 kgf
+Vehicle: Stage 2 Enclosed 5-inch (retractable legs): m = 1.9049 kg, I = (0.0134641, 0.014953, 0.0245501) kg m^2 [mass_cg_inertia_audit.json (/inertia_headline/stage 2 enclosed legs up (payload in))], thrust mult = 0.9634, Tmax @21.5 V = 1.362 kgf
+
+=== Run A: Stage 1 bare quad: ALT_HOLD 30 s, LOITER 60 s, LAND (2 m/s breeze) ===
+  flight_time_s           : 111.8
+  mah_used                : 323.3
+  batt_remaining_pct_end  : 87.6
+  hover_current_mean_a    : 10.37
+  hover_thr_out_mean      : 0.1531
+  thr_hover_learned_end   : 0.1561
+  max_current_a           : 18.0
+  min_voltage_v           : 24.22
+  max_lean_deg            : 12.8
+  xtrack_max_m            : None
+  xtrack_p95_m            : None
+  max_dist_home_m         : 1.5
+  landing_pos_err_m       : 0.67
+    t=   0.00s  ARMED
+    t=   2.64s  TAKEOFF complete 3 m
+    t= 112.97s  LANDED + DISARMED (87.6 % left)
+
+=== Run B0: Stage 2 enclosed: ALT_HOLD 30 s, LOITER 60 s in 15 km/h wind ===
+  flight_time_s           : 112.5
+  mah_used                : 909.0
+  batt_remaining_pct_end  : 65.0
+  hover_current_mean_a    : 29.26
+  hover_thr_out_mean      : 0.3089
+  thr_hover_learned_end   : 0.3202
+  max_current_a           : 50.5
+  min_voltage_v           : 22.8
+  max_lean_deg            : 29.1
+  xtrack_max_m            : None
+  xtrack_p95_m            : None
+  max_dist_home_m         : 5.0
+  landing_pos_err_m       : 0.44
+    t=   0.00s  ARMED
+    t=   2.63s  TAKEOFF complete 3 m
+    t= 113.68s  LANDED + DISARMED (65.0 % left)
+
+=== Run B: Stage 2 enclosed: full AUTO mission, 15 km/h wind + turbulence ===
+  flight_time_s           : 128.7
+  mah_used                : 1082.8
+  batt_remaining_pct_end  : 58.4
+  hover_current_mean_a    : 29.97
+  hover_thr_out_mean      : 0.3169
+  thr_hover_learned_end   : 0.3242
+  max_current_a           : 35.0
+  min_voltage_v           : 22.52
+  max_lean_deg            : 27.5
+  xtrack_max_m            : 2.267
+  xtrack_p95_m            : 1.453
+  max_dist_home_m         : 41.2
+  landing_pos_err_m       : 0.45
+    t=   0.00s  ARMED
+    t=   4.29s  GEAR retract (alt 5.0 m)
+    t=   8.79s  TAKEOFF complete 12 m
+    t=   8.79s  MISSION gear RETRACT (seq 2)
+    t=  20.55s  Reached WP seq 3 (err 0.95 m)
+    t=  42.02s  Reached WP seq 4 (err 0.98 m)
+    t=  54.87s  Reached WP seq 5 (err 0.94 m)
+    t=  67.69s  Reached WP seq 6 (err 0.83 m)
+    t=  85.01s  Reached WP seq 7 (err 1.00 m)
+    t= 100.32s  Reached WP seq 8 (err 0.96 m)
+    t= 105.32s  DO_LAND_START marker (seq 9)
+    t= 110.98s  Reached WP seq 10 (err 0.50 m)
+    t= 112.98s  MISSION gear DEPLOY (seq 11)
+    t= 129.88s  LANDED + DISARMED (58.4 % left)
+
+=== Run B25: Stage 2 enclosed: same mission at WPNAV_SPEED 2.5 m/s (wind mitigation) ===
+  flight_time_s           : 130.9
+  mah_used                : 1099.0
+  batt_remaining_pct_end  : 57.7
+  hover_current_mean_a    : 29.84
+  hover_thr_out_mean      : 0.3163
+  thr_hover_learned_end   : 0.3271
+  max_current_a           : 35.5
+  min_voltage_v           : 22.5
+  max_lean_deg            : 27.6
+  xtrack_max_m            : 2.426
+  xtrack_p95_m            : 1.381
+  max_dist_home_m         : 41.3
+  landing_pos_err_m       : 0.52
+    t=   0.00s  ARMED
+    t=   4.29s  GEAR retract (alt 5.0 m)
+    t=   8.79s  TAKEOFF complete 12 m
+    t=   8.79s  MISSION gear RETRACT (seq 2)
+    t=  20.51s  Reached WP seq 3 (err 0.98 m)
+    t=  42.02s  Reached WP seq 4 (err 0.96 m)
+    t=  56.01s  Reached WP seq 5 (err 0.77 m)
+    t=  70.00s  Reached WP seq 6 (err 0.95 m)
+    t=  86.98s  Reached WP seq 7 (err 0.89 m)
+    t= 102.46s  Reached WP seq 8 (err 0.71 m)
+    t= 107.46s  DO_LAND_START marker (seq 9)
+    t= 113.45s  Reached WP seq 10 (err 0.80 m)
+    t= 115.45s  MISSION gear DEPLOY (seq 11)
+    t= 132.02s  LANDED + DISARMED (57.7 % left)
+
+=== Run B10: Stage 2 enclosed: same mission in 10 km/h wind (operating-limit study) ===
+  flight_time_s           : 117.7
+  mah_used                : 935.5
+  batt_remaining_pct_end  : 64.0
+  hover_current_mean_a    : 27.97
+  hover_thr_out_mean      : 0.2984
+  thr_hover_learned_end   : 0.306
+  max_current_a           : 34.4
+  min_voltage_v           : 22.76
+  max_lean_deg            : 27.6
+  xtrack_max_m            : 1.104
+  xtrack_p95_m            : 0.717
+  max_dist_home_m         : 40.5
+  landing_pos_err_m       : 0.34
+    t=   0.00s  ARMED
+    t=   4.29s  GEAR retract (alt 5.0 m)
+    t=   8.79s  TAKEOFF complete 12 m
+    t=   8.79s  MISSION gear RETRACT (seq 2)
+    t=  17.34s  Reached WP seq 3 (err 0.31 m)
+    t=  33.94s  Reached WP seq 4 (err 0.98 m)
+    t=  47.87s  Reached WP seq 5 (err 0.99 m)
+    t=  61.25s  Reached WP seq 6 (err 0.96 m)
+    t=  76.19s  Reached WP seq 7 (err 0.75 m)
+    t=  89.00s  Reached WP seq 8 (err 0.53 m)
+    t=  94.00s  DO_LAND_START marker (seq 9)
+    t=  99.66s  Reached WP seq 10 (err 0.73 m)
+    t= 101.66s  MISSION gear DEPLOY (seq 11)
+    t= 118.89s  LANDED + DISARMED (64.0 % left)
+
+=== Run C1: Failsafe: RC loss at t = 45 s -> RTL ===
+  flight_time_s           : 94.8
+  mah_used                : 772.1
+  batt_remaining_pct_end  : 70.3
+  hover_current_mean_a    : 28.81
+  hover_thr_out_mean      : 0.3006
+  thr_hover_learned_end   : 0.3095
+  max_current_a           : 38.9
+  min_voltage_v           : 23.04
+  max_lean_deg            : 28.1
+  xtrack_max_m            : 1.816
+  xtrack_p95_m            : 1.697
+  max_dist_home_m         : 41.1
+  landing_pos_err_m       : 0.84
+    t=   0.00s  ARMED
+    t=   4.27s  GEAR retract (alt 5.0 m)
+    t=   8.76s  TAKEOFF complete 12 m
+    t=   8.76s  MISSION gear RETRACT (seq 2)
+    t=  19.06s  Reached WP seq 3 (err 0.99 m)
+    t=  37.09s  Reached WP seq 4 (err 0.99 m)
+    t=  45.00s  FAILSAFE radio (RC lost)
+    t=  45.00s  MODE RTL (RC failsafe)
+    t=  87.25s  GEAR deploy (alt 3.0 m)
+    t=  95.97s  LANDED + DISARMED (70.3 % left)
+
+=== Run C2: Failsafe: low battery (pack starts at 42 %) -> RTL -> LAND ===
+  flight_time_s           : 78.4
+  mah_used                : 2218.4
+  batt_remaining_pct_end  : 14.7
+  hover_current_mean_a    : 32.84
+  hover_thr_out_mean      : 0.3738
+  thr_hover_learned_end   : 0.3687
+  max_current_a           : 41.2
+  min_voltage_v           : 21.04
+  max_lean_deg            : 27.4
+  xtrack_max_m            : 3.191
+  xtrack_p95_m            : 3.051
+  max_dist_home_m         : 22.0
+  landing_pos_err_m       : 0.14
+    t=   0.00s  ARMED
+    t=   4.27s  GEAR retract (alt 5.0 m)
+    t=   8.82s  TAKEOFF complete 12 m
+    t=   8.82s  MISSION gear RETRACT (seq 2)
+    t=  27.08s  Reached WP seq 3 (err 0.96 m)
+    t=  32.76s  FAILSAFE battery LOW (780 mAh, 22.26 V rest)
+    t=  32.76s  MODE RTL (battery low)
+    t=  70.81s  FAILSAFE battery CRITICAL (450 mAh, 21.74 V rest)
+    t=  70.81s  MODE LAND (battery critical)
+    t=  71.51s  GEAR deploy (alt 3.0 m)
+    t=  79.68s  LANDED + DISARMED (14.7 % left)
+
+=== Run C3: Failsafe: geofence (rogue WP 150 m out, FENCE_RADIUS 120 m) -> RTL ===
+  flight_time_s           : 148.2
+  mah_used                : 1250.3
+  batt_remaining_pct_end  : 51.9
+  hover_current_mean_a    : 28.92
+  hover_thr_out_mean      : 0.3036
+  thr_hover_learned_end   : 0.3173
+  max_current_a           : 40.4
+  min_voltage_v           : 22.34
+  max_lean_deg            : 30.6
+  xtrack_max_m            : 2.19
+  xtrack_p95_m            : 1.681
+  max_dist_home_m         : 122.2
+  landing_pos_err_m       : 0.28
+    t=   0.00s  ARMED
+    t=   4.28s  GEAR retract (alt 5.0 m)
+    t=   8.81s  TAKEOFF complete 12 m
+    t=   8.81s  MISSION gear RETRACT (seq 2)
+    t=  23.45s  Reached WP seq 3 (err 0.94 m)
+    t=  40.78s  Reached WP seq 4 (err 0.99 m)
+    t=  75.31s  FENCE breach (120.0 m from home, alt 12.1 m)
+    t=  75.31s  MODE RTL (geofence)
+    t= 141.23s  GEAR deploy (alt 3.0 m)
+    t= 149.38s  LANDED + DISARMED (51.9 % left)
+
+=== Run D: Stage 2 still-air endurance hover to 80 % of pack used ===
+  flight_time_s           : 270.9
+  mah_used                : 2080.0
+  batt_remaining_pct_end  : 20.0
+  hover_current_mean_a    : 27.68
+  hover_thr_out_mean      : 0.3127
+  thr_hover_learned_end   : 0.3504
+  max_current_a           : 31.4
+  min_voltage_v           : 21.36
+  max_lean_deg            : 2.0
+  xtrack_max_m            : None
+  xtrack_p95_m            : None
+  max_dist_home_m         : 0.8
+  landing_pos_err_m       : 0.41
+    t=   0.00s  ARMED
+    t=   4.26s  GEAR retract (alt 5.0 m)
+    t=   6.02s  TAKEOFF complete 8 m
+    t= 271.01s  Endurance stop at 80 % used
+
+Saved outputs/plots/fig6_autonomous_mission_and_failsafes.png
+Saved telemetry CSVs + mission_sim_summary.json in C:\Users\udhav\UAV-Design\outputs\logs

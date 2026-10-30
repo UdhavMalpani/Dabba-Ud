@@ -1,0 +1,42 @@
+Name,Unit,Expression,Value,Comments,Favorite
+prop_d,mm,127 mm,127.00,"5x4.3 tri-blade prop diameter (Hardware Sync Gate A: caliper value)",true
+tip_clear,mm,1.5 mm,1.50,"Radial blade-tip gap; Stage 0 rings 1.0 / 1.5 / 2.0 mm",true
+bore_d,mm,prop_d + 2 * tip_clear,130.00,"Duct bore (throat) diameter d_b = D + 2*delta",true
+lip_r,mm,0.05 * 130 mm,6.50,"Bellmouth inlet lip radius (5 % of baseline bore; held constant for all test rings)",true
+wall_t,mm,1.6 mm,1.60,"Duct structural wall (PETG / PETG-CF)",false
+duct_od,mm,bore_d + 2 * ( lip_r + wall_t ),146.20,"Duct outer diameter d_o = d_b + 2*(r_lip + t)",true
+duct_len,mm,50 mm,50.00,"Duct axial length L (L/D = 0.39)",true
+rotor_depth_ratio,,0.30,0.30,"Rotor plane depth as fraction of L",false
+rotor_depth,mm,duct_len * rotor_depth_ratio,15.00,"Rotor plane below inlet plane",true
+diff_len,mm,duct_len - rotor_depth,35.00,"Diffuser length below rotor plane",false
+diff_half_angle,deg,4.1 deg,4.10,"Conical diffuser half angle (<= 5 deg)",false
+exit_d,mm,bore_d + 2 * diff_len * tan(diff_half_angle),135.02,"Diffuser exit inner diameter (area ratio ~1.08)",true
+arm_slot_w,mm,16 mm,16.00,"Carbon arm slot width in duct exit (14 mm arm + 1 mm/side)",false
+arm_slot_h,mm,12 mm,12.00,"Arm slot height above duct exit plane",false
+motor_offset_a,mm,97.5 mm,97.50,"Motor axis offset from centre in X and Y (276 mm diagonal)",true
+spine_w,mm,45 mm,45.00,"Central cross spine width",true
+spine_clear,mm,2 * motor_offset_a - duct_od - spine_w,3.80,"Duct-to-duct gap minus spine width (must be > 0)",false
+outer_margin,mm,5.9 mm,5.90,"Wall/corner margin per side",false
+box_w,mm,2 * motor_offset_a + duct_od + 2 * outer_margin,353.00,"Outer cuboid box width W",true
+quarter_w,mm,box_w / 2,176.50,"Printed quarter width (<= 256 mm Bambu P1S bed)",true
+box_h,mm,100 mm,100.00,"Outer box height",true
+panel_t,mm,0.8 mm,0.80,"Side panel thickness (PLA)",false
+deck_t,mm,1.0 mm,1.00,"Top / bottom deck thickness (PLA)",false
+pocket_clear,mm,0.25 mm,0.25,"Radial clearance of duct pocket in decks",false
+flange_t,mm,1.6 mm,1.60,"Spine-joint flange rail thickness",false
+flange_h,mm,10 mm,10.00,"Spine-joint flange rail height",false
+grille_bar,mm,1 mm,1.00,"Grille bar width b",true
+grille_pitch,mm,12 mm,12.00,"Grille bar pitch s",true
+grille_depth,mm,4 mm,4.00,"Grille axial depth",true
+grille_gap,mm,grille_pitch - grille_bar,11.00,"Finger-safe clear opening",false
+grille_rim,mm,3 mm,3.00,"Grille perimeter rim width",false
+payload_L,mm,60 mm,60.00,"Payload bay length (X)",true
+payload_W,mm,40 mm,40.00,"Payload bay width (Y)",true
+payload_H,mm,30 mm,30.00,"Payload bay height (Z)",true
+spine_len,mm,250 mm,250.00,"Printed central cross-spine section length",false
+spine_wall,mm,1.6 mm,1.60,"Spine wall thickness",false
+cam_win_w,mm,20 mm,20.00,"RunCam Thumb window width",false
+cam_win_h,mm,16 mm,16.00,"RunCam Thumb window height",false
+leg_len,mm,240 mm,240.00,"Retractable leg length pivot-to-foot",true
+leg_t,mm,8 mm,8.00,"Leg thickness (print height)",false
+foot_len,mm,100 mm,100.00,"Lateral foot length",false

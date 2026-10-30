@@ -1,0 +1,215 @@
+# Project 8 - Team 4 - ArduCopter 4.5.x/4.6.x - SpeedyBee F405 V4 (board target: speedybeef4v4)
+# STAGE 2 CONTINGENCY: 4S 4000 mAh pack + 5" 2400KV motors (if 6S parts are unavailable). Skids airframe.
+# Same props/ducts. AUW ~1.9 kg (heavier pack). For the legs airframe, copy the landing-gear block from the legs file.
+# 2207 2400KV (4S), 5x4.3x3 in 130 mm bore ducts (1.5 mm tip gap), BLS 60A 4-in-1 (Bluejay), 4S 4000 mAh XT90
+# Matek M10Q-5883, lab RC + telemetry (433/865 MHz), RunCam Thumb (record-only)
+#
+# HOW TO LOAD: Mission Planner > Full Parameter List > Load from file > Write, REBOOT, load + write AGAIN.
+# After Stage 1 -> Stage 2 swap: redo accel level cal + compass cal (new metal/wiring layout), then Gates 4-10 again
+# with a FRESH AUTOTUNE (inertia changed). Do NOT carry Stage 1 autotune gains into this airframe.
+# Format: NAME,VALUE. Comments on their own lines only.
+#
+# UART/OUTPUT ASSUMPTIONS (verify at https://ardupilot.org/copter/docs/common-speedybeef405v4.html):
+#   SERIAL1=UART1 telemetry MAVLink2 57600 | SERIAL2=UART2 RC (23) | SERIAL3 off | SERIAL4 BT (default)
+#   SERIAL5=UART5 off (no BLHeli_S serial telem) | SERIAL6=UART6 GPS + I2C compass
+#   SERVO1-4 = M1-M4 harness (Betaflight order, remapped below) | SERVO5-6 unused (skids)
+#
+# WHY THE GAINS CHANGE vs STAGE 1:
+#   Roll/pitch inertia rises roughly 2-3x (4 ducts + 4 enclosure quarters + grilles sit at r ~ 100-175 mm),
+#   while per-motor thrust authority is unchanged and hover throttle rises 0.20 -> 0.34 (less headroom).
+#   Achievable angular acceleration therefore drops ~2-3x -> ATC_ACCEL_R/P_MAX cut from 72000 to 36000.
+#   Required rate P scales up with inertia; we start only ~1.4x higher (0.12) because too-low gains are
+#   sluggish-but-safe while too-high gains oscillate. AUTOTUNE (Gate 8) sets the final values.
+#   YAW: yaw torque comes only from motor reaction-torque differences; the ducts/box add yaw inertia and
+#   the duct walls/grilles damp swirl, so yaw authority is the weakest axis. Large yaw demands saturate the
+#   mixer and steal roll/pitch headroom -> lower ATC_RAT_YAW_P, ATC_ACCEL_Y_MAX and ATC_RATE_Y_MAX.
+
+# ---------------- Frame & motor outputs ----------------
+FRAME_CLASS,1
+FRAME_TYPE,1
+# Betaflight-order ESC harness -> ArduPilot X motor numbers (verify with MP Motor Test, props OFF)
+SERVO1_FUNCTION,36
+SERVO2_FUNCTION,33
+SERVO3_FUNCTION,34
+SERVO4_FUNCTION,35
+SERVO5_FUNCTION,0
+SERVO6_FUNCTION,0
+MOT_PWM_TYPE,6
+# Bidirectional DShot outputs 1-4 - requires Bluejay on the BLS 60A
+SERVO_BLH_BDMASK,15
+SERVO_BLH_AUTO,1
+# CHECK the 2400KV motor pole count (most 22xx/23xx 5" motors are 12N14P = 14)
+SERVO_BLH_POLES,14
+SERVO_DSHOT_ESC,1
+MOT_SPIN_ARM,0.07
+# Slightly higher min spin: ducted props unload in descent; keeps the ESCs synced and attitude authority at low throttle
+MOT_SPIN_MIN,0.12
+MOT_SPIN_MAX,0.95
+MOT_THST_EXPO,0.65
+# Plan value: 476 gf/motor hover vs ~1.41 kgf usable -> ~0.34 (learned value replaces it, Gate 5)
+# 4S/2400KV: no-load ~28.4k RPM vs ~30.2k on 6S/1700KV and heavier pack -> hover ~0.38 (learned)
+MOT_THST_HOVER,0.38
+MOT_HOVER_LEARN,2
+# 4S: 4.20 V x4 / 3.30 V x4
+MOT_BAT_VOLT_MAX,16.8
+MOT_BAT_VOLT_MIN,13.2
+# CHECK: 180 A must be <= 4.0 Ah x pack C-rating (needs >= 45C)
+# Plan value: 4S draws ~1.5x the current of 6S for the same power
+MOT_BAT_CURR_MAX,180
+MOT_BAT_IDX,0
+# Reserve 20% throttle for yaw before roll/pitch is compromised (default 200; kept explicit)
+MOT_YAW_HEADROOM,200
+
+# ---------------- Battery monitor ----------------
+BATT_MONITOR,4
+BATT_CAPACITY,4000
+# BLS ESC current scale 400 (Betaflight) = 25 A/V. CALIBRATE against charger mAh.
+BATT_AMP_PERVLT,25.0
+BATT_AMP_OFFSET,0.0
+# 4S thresholds: 3.50 / 3.30 V per cell
+BATT_LOW_VOLT,14.0
+BATT_CRT_VOLT,13.2
+BATT_FS_VOLTSRC,1
+BATT_LOW_TIMER,10
+# LOW at 30% of 4000 (1200 mAh) -> RTL, lands >= 25%. CRITICAL ~17% (680 mAh) -> Land.
+BATT_LOW_MAH,1200
+BATT_CRT_MAH,680
+BATT_FS_LOW_ACT,2
+BATT_FS_CRT_ACT,1
+# Refuse to arm below 3.85 V/cell
+BATT_ARM_VOLT,15.4
+
+# ---------------- Harmonic notch ----------------
+INS_HNTCH_ENABLE,1
+# 3 = ESC RPM (bdshot). FALLBACK: INS_HNTCH_MODE,1 + INS_HNTCH_REF,0.38 (= MOT_THST_HOVER)
+INS_HNTCH_MODE,3
+INS_HNTCH_REF,1
+# Enclosed hover: 476 gf/motor -> ~15,000-15,600 RPM (duct thrust share lowers it slightly) -> ~250 Hz
+# Same prop + similar thrust -> hover RPM ~15,300 -> ~255 Hz
+INS_HNTCH_FREQ,255
+INS_HNTCH_BW,128
+INS_HNTCH_ATT,40
+# 1st + 3rd harmonic (tri-blade blade-pass)
+INS_HNTCH_HMNCS,5
+INS_HNTCH_OPTS,0
+# Heavier, stiffer airframe; enclosure panels may ring - slightly lower gyro LPF than Stage 1
+INS_GYRO_FILTER,70
+INS_ACCEL_FILTER,20
+INS_LOG_BAT_MASK,1
+INS_LOG_BAT_OPT,2
+
+# ---------------- Attitude / rate control (enclosed starting gains; AUTOTUNE again) ----------------
+ATC_RAT_RLL_P,0.12
+ATC_RAT_RLL_I,0.12
+ATC_RAT_RLL_D,0.0030
+ATC_RAT_RLL_FLTD,35
+ATC_RAT_RLL_FLTT,35
+ATC_RAT_PIT_P,0.12
+ATC_RAT_PIT_I,0.12
+ATC_RAT_PIT_D,0.0030
+ATC_RAT_PIT_FLTD,35
+ATC_RAT_PIT_FLTT,35
+# Weak yaw axis in a ducted box: lower P than Stage 1 (0.18 -> 0.15) to avoid yaw saturating the mixer
+ATC_RAT_YAW_P,0.15
+ATC_RAT_YAW_I,0.015
+ATC_RAT_YAW_D,0.0
+ATC_RAT_YAW_FLTE,2
+# Angular accel ~ thrust authority / inertia -> roughly halved vs Stage 1 for roll/pitch; yaw cut hard
+ATC_ACCEL_R_MAX,36000
+ATC_ACCEL_P_MAX,36000
+ATC_ACCEL_Y_MAX,9000
+ATC_RATE_R_MAX,180
+ATC_RATE_P_MAX,180
+ATC_RATE_Y_MAX,60
+ATC_INPUT_TC,0.20
+# 30 deg lean limit: at 0.34 hover throttle, 30 deg needs 1/cos30 = 1.15x hover thrust (keeps >2x thrust reserve)
+ANGLE_MAX,3000
+
+# ---------------- Pilot / nav (mission values per plan) ----------------
+PILOT_SPEED_UP,200
+PILOT_SPEED_DN,120
+PILOT_ACCEL_Z,200
+LOIT_SPEED,350
+LOIT_ACC_MAX,250
+WPNAV_SPEED,350
+WPNAV_ACCEL,120
+WPNAV_SPEED_UP,150
+WPNAV_SPEED_DN,100
+# 1 m acceptance radius so waypoint tracking error can be graded against the 2 m gate
+WPNAV_RADIUS,100
+# Hold heading on mission legs: yaw is the weakest axis in a ducted box (reaction torque only), so do not spend it turning to face each waypoint
+WP_YAW_BEHAVIOR,0
+# RTL 15 m: above the 12 m mission altitude and campus trees/poles
+RTL_ALT,1500
+RTL_SPEED,300
+RTL_ALT_FINAL,0
+RTL_LOIT_TIME,3000
+LAND_SPEED,40
+LAND_ALT_LOW,1000
+
+# ---------------- Failsafes ----------------
+FS_THR_ENABLE,1
+FS_THR_VALUE,975
+FS_GCS_ENABLE,1
+FS_EKF_ACTION,1
+FS_EKF_THRESH,0.8
+FS_CRASH_CHECK,1
+FS_VIBE_ENABLE,1
+FENCE_ENABLE,1
+FENCE_TYPE,7
+FENCE_ACTION,1
+FENCE_RADIUS,120
+FENCE_ALT_MAX,40
+FENCE_MARGIN,2
+
+# ---------------- RC & flight modes ----------------
+SERIAL2_PROTOCOL,23
+RCMAP_ROLL,1
+RCMAP_PITCH,2
+RCMAP_THROTTLE,3
+RCMAP_YAW,4
+FLTMODE_CH,5
+# 0 STABILIZE, 2 ALT_HOLD, 5 LOITER, 3 AUTO, 6 RTL, 9 LAND (swap slot 4 to 15 AUTOTUNE for Gate 8)
+FLTMODE1,0
+FLTMODE2,2
+FLTMODE3,5
+FLTMODE4,3
+FLTMODE5,6
+FLTMODE6,9
+RC7_OPTION,31
+ARMING_CHECK,1
+ARMING_RUDDER,2
+DISARM_DELAY,10
+BRD_SAFETY_DEFLT,0
+
+# ---------------- GPS & compass ----------------
+# VERSION NOTE (4.6): GPS_TYPE -> GPS1_TYPE, GPS_GNSS_MODE -> GPS1_GNSS_MODE
+SERIAL6_PROTOCOL,5
+SERIAL6_BAUD,230
+GPS_TYPE,1
+GPS_AUTO_CONFIG,1
+GPS_GNSS_MODE,15
+GPS_SBAS_MODE,1
+GPS_HDOP_GOOD,140
+COMPASS_ENABLE,1
+COMPASS_USE,1
+COMPASS_AUTODEC,1
+COMPASS_ORIENT,0
+COMPASS_AUTO_ROT,2
+# After compass cal, run COMPASSMOT (Initial Setup > Optional > CompassMot) and set COMPASS_MOTCT,2 if interference > 30%
+
+# ---------------- Telemetry & serial ----------------
+SERIAL1_PROTOCOL,2
+SERIAL1_BAUD,57
+SERIAL3_PROTOCOL,-1
+SERIAL5_PROTOCOL,-1
+
+# ---------------- Logging ----------------
+LOG_BITMASK,176126
+LOG_BACKEND_TYPE,1
+LOG_DISARMED,0
+
+# ---------------- Autotune ----------------
+# Tune roll+pitch first (3); run yaw (4) separately in calm air if roll/pitch tune is good
+AUTOTUNE_AXES,3
+AUTOTUNE_AGGR,0.1

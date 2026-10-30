@@ -1,0 +1,280 @@
+{
+  "data_source": "SYNTHETIC model prediction",
+  "rho_test": 1.09,
+  "flight_baseline_config": "duct_grilles_gap1.5",
+  "flight_baseline_gate": {
+    "usable_thrust_kgf": 1.456,
+    "tw_skids": 3.19,
+    "tw_legs": 3.06,
+    "decision_code": "LEGS",
+    "decision": "PASS (legs): keep 5-inch as designed and fit the retractable legs"
+  },
+  "best_ducted_config": "duct_grilles_gap1.0",
+  "configs": [
+    {
+      "config": "open_5x4.3_3blade",
+      "tip_gap_mm": null,
+      "is_ducted": false,
+      "max_thrust_kgf_measured": 1.778,
+      "voltage_at_max_v": 24.08,
+      "current_at_max_a": 36.0,
+      "power_at_max_w": 871.2,
+      "rpm_at_max": 36700,
+      "usable_max_thrust_kgf": 1.417,
+      "ct_mean_upper_half": 0.1654,
+      "cp_mean_upper_half": 0.0883,
+      "fm_max": 0.633,
+      "hover": {
+        "skids_1825g": {
+          "hover_thrust_gf": 456.3,
+          "elec_power_per_motor_w": 126.8,
+          "current_per_motor_a_at_test_v": 5.29,
+          "throttle_frac": 0.4,
+          "rpm": 18507,
+          "efficiency_g_per_w": 3.6,
+          "mot_thst_hover_pred": 0.322,
+          "thrust_to_weight": 3.11,
+          "total_hover_current_a_no_box_loss": 23.3,
+          "hover_time_min_no_box_loss": 5.36,
+          "hover_time_min_with_box_20pct": 4.48,
+          "fm_at_hover": 0.562
+        },
+        "legs_1905g": {
+          "hover_thrust_gf": 476.2,
+          "elec_power_per_motor_w": 134.1,
+          "current_per_motor_a_at_test_v": 5.56,
+          "throttle_frac": 0.411,
+          "rpm": 18869,
+          "efficiency_g_per_w": 3.55,
+          "mot_thst_hover_pred": 0.336,
+          "thrust_to_weight": 2.98,
+          "total_hover_current_a_no_box_loss": 24.6,
+          "hover_time_min_no_box_loss": 5.07,
+          "hover_time_min_with_box_20pct": 4.24,
+          "fm_at_hover": 0.567
+        }
+      },
+      "thrust_at_open_hover_power_g": 476.3,
+      "duct_gain_at_equal_power_pct": 0.0,
+      "gate": {
+        "usable_thrust_kgf": 1.417,
+        "tw_skids": 3.11,
+        "tw_legs": 2.98,
+        "decision_code": "LEGS",
+        "decision": "PASS (legs): keep 5-inch as designed and fit the retractable legs"
+      }
+    },
+    {
+      "config": "open_5x4.5_2blade",
+      "tip_gap_mm": null,
+      "is_ducted": false,
+      "max_thrust_kgf_measured": 1.458,
+      "voltage_at_max_v": 24.35,
+      "current_at_max_a": 25.5,
+      "power_at_max_w": 622.3,
+      "rpm_at_max": 38885,
+      "usable_max_thrust_kgf": 1.137,
+      "ct_mean_upper_half": 0.1205,
+      "cp_mean_upper_half": 0.053,
+      "fm_max": 0.659,
+      "hover": {
+        "skids_1825g": {
+          "hover_thrust_gf": 456.3,
+          "elec_power_per_motor_w": 120.1,
+          "current_per_motor_a_at_test_v": 4.8,
+          "throttle_frac": 0.461,
+          "rpm": 21604,
+          "efficiency_g_per_w": 3.8,
+          "mot_thst_hover_pred": 0.401,
+          "thrust_to_weight": 2.49,
+          "total_hover_current_a_no_box_loss": 22.1,
+          "hover_time_min_no_box_loss": 5.65,
+          "hover_time_min_with_box_20pct": 4.73,
+          "fm_at_hover": 0.594
+        },
+        "legs_1905g": {
+          "hover_thrust_gf": 476.2,
+          "elec_power_per_motor_w": 128.0,
+          "current_per_motor_a_at_test_v": 5.12,
+          "throttle_frac": 0.475,
+          "rpm": 22143,
+          "efficiency_g_per_w": 3.72,
+          "mot_thst_hover_pred": 0.419,
+          "thrust_to_weight": 2.39,
+          "total_hover_current_a_no_box_loss": 23.5,
+          "hover_time_min_no_box_loss": 5.31,
+          "hover_time_min_with_box_20pct": 4.44,
+          "fm_at_hover": 0.595
+        }
+      },
+      "thrust_at_open_hover_power_g": 491.6,
+      "duct_gain_at_equal_power_pct": 3.21,
+      "gate": {
+        "usable_thrust_kgf": 1.137,
+        "tw_skids": 2.49,
+        "tw_legs": 2.39,
+        "decision_code": "TRIM",
+        "decision": "MARGINAL: keep 5-inch, trim ~140 g (3 mm grilles, LW-PLA panels, 1.2 mm duct wall)"
+      }
+    },
+    {
+      "config": "duct_grilles_gap1.0",
+      "tip_gap_mm": 1.0,
+      "is_ducted": true,
+      "max_thrust_kgf_measured": 1.862,
+      "voltage_at_max_v": 24.13,
+      "current_at_max_a": 36.2,
+      "power_at_max_w": 871.2,
+      "rpm_at_max": 36158,
+      "usable_max_thrust_kgf": 1.478,
+      "ct_mean_upper_half": 0.1787,
+      "cp_mean_upper_half": 0.0926,
+      "fm_max": 0.68,
+      "hover": {
+        "skids_1825g": {
+          "hover_thrust_gf": 456.3,
+          "elec_power_per_motor_w": 120.1,
+          "current_per_motor_a_at_test_v": 4.76,
+          "throttle_frac": 0.388,
+          "rpm": 17984,
+          "efficiency_g_per_w": 3.8,
+          "mot_thst_hover_pred": 0.309,
+          "thrust_to_weight": 3.24,
+          "total_hover_current_a_no_box_loss": 22.1,
+          "hover_time_min_no_box_loss": 5.65,
+          "hover_time_min_with_box_20pct": 4.73,
+          "fm_at_hover": 0.595
+        },
+        "legs_1905g": {
+          "hover_thrust_gf": 476.2,
+          "elec_power_per_motor_w": 128.2,
+          "current_per_motor_a_at_test_v": 5.13,
+          "throttle_frac": 0.402,
+          "rpm": 18455,
+          "efficiency_g_per_w": 3.72,
+          "mot_thst_hover_pred": 0.322,
+          "thrust_to_weight": 3.1,
+          "total_hover_current_a_no_box_loss": 23.5,
+          "hover_time_min_no_box_loss": 5.3,
+          "hover_time_min_with_box_20pct": 4.43,
+          "fm_at_hover": 0.593
+        }
+      },
+      "thrust_at_open_hover_power_g": 493.8,
+      "duct_gain_at_equal_power_pct": 3.67,
+      "gate": {
+        "usable_thrust_kgf": 1.478,
+        "tw_skids": 3.24,
+        "tw_legs": 3.1,
+        "decision_code": "LEGS",
+        "decision": "PASS (legs): keep 5-inch as designed and fit the retractable legs"
+      }
+    },
+    {
+      "config": "duct_grilles_gap1.5",
+      "tip_gap_mm": 1.5,
+      "is_ducted": true,
+      "max_thrust_kgf_measured": 1.832,
+      "voltage_at_max_v": 24.12,
+      "current_at_max_a": 36.0,
+      "power_at_max_w": 871.2,
+      "rpm_at_max": 36383,
+      "usable_max_thrust_kgf": 1.456,
+      "ct_mean_upper_half": 0.1749,
+      "cp_mean_upper_half": 0.0923,
+      "fm_max": 0.658,
+      "hover": {
+        "skids_1825g": {
+          "hover_thrust_gf": 456.3,
+          "elec_power_per_motor_w": 123.5,
+          "current_per_motor_a_at_test_v": 5.12,
+          "throttle_frac": 0.394,
+          "rpm": 18166,
+          "efficiency_g_per_w": 3.7,
+          "mot_thst_hover_pred": 0.313,
+          "thrust_to_weight": 3.19,
+          "total_hover_current_a_no_box_loss": 22.7,
+          "hover_time_min_no_box_loss": 5.5,
+          "hover_time_min_with_box_20pct": 4.6,
+          "fm_at_hover": 0.578
+        },
+        "legs_1905g": {
+          "hover_thrust_gf": 476.2,
+          "elec_power_per_motor_w": 131.3,
+          "current_per_motor_a_at_test_v": 5.45,
+          "throttle_frac": 0.406,
+          "rpm": 18568,
+          "efficiency_g_per_w": 3.63,
+          "mot_thst_hover_pred": 0.327,
+          "thrust_to_weight": 3.06,
+          "total_hover_current_a_no_box_loss": 24.1,
+          "hover_time_min_no_box_loss": 5.18,
+          "hover_time_min_with_box_20pct": 4.33,
+          "fm_at_hover": 0.579
+        }
+      },
+      "thrust_at_open_hover_power_g": 483.6,
+      "duct_gain_at_equal_power_pct": 1.53,
+      "gate": {
+        "usable_thrust_kgf": 1.456,
+        "tw_skids": 3.19,
+        "tw_legs": 3.06,
+        "decision_code": "LEGS",
+        "decision": "PASS (legs): keep 5-inch as designed and fit the retractable legs"
+      }
+    },
+    {
+      "config": "duct_grilles_gap2.0",
+      "tip_gap_mm": 2.0,
+      "is_ducted": true,
+      "max_thrust_kgf_measured": 1.797,
+      "voltage_at_max_v": 24.07,
+      "current_at_max_a": 36.1,
+      "power_at_max_w": 871.2,
+      "rpm_at_max": 36255,
+      "usable_max_thrust_kgf": 1.433,
+      "ct_mean_upper_half": 0.1695,
+      "cp_mean_upper_half": 0.0921,
+      "fm_max": 0.639,
+      "hover": {
+        "skids_1825g": {
+          "hover_thrust_gf": 456.3,
+          "elec_power_per_motor_w": 124.1,
+          "current_per_motor_a_at_test_v": 5.23,
+          "throttle_frac": 0.395,
+          "rpm": 18245,
+          "efficiency_g_per_w": 3.68,
+          "mot_thst_hover_pred": 0.318,
+          "thrust_to_weight": 3.14,
+          "total_hover_current_a_no_box_loss": 22.8,
+          "hover_time_min_no_box_loss": 5.47,
+          "hover_time_min_with_box_20pct": 4.57,
+          "fm_at_hover": 0.574
+        },
+        "legs_1905g": {
+          "hover_thrust_gf": 476.2,
+          "elec_power_per_motor_w": 131.9,
+          "current_per_motor_a_at_test_v": 5.54,
+          "throttle_frac": 0.407,
+          "rpm": 18631,
+          "efficiency_g_per_w": 3.61,
+          "mot_thst_hover_pred": 0.332,
+          "thrust_to_weight": 3.01,
+          "total_hover_current_a_no_box_loss": 24.2,
+          "hover_time_min_no_box_loss": 5.15,
+          "hover_time_min_with_box_20pct": 4.31,
+          "fm_at_hover": 0.576
+        }
+      },
+      "thrust_at_open_hover_power_g": 481.5,
+      "duct_gain_at_equal_power_pct": 1.09,
+      "gate": {
+        "usable_thrust_kgf": 1.433,
+        "tw_skids": 3.14,
+        "tw_legs": 3.01,
+        "decision_code": "LEGS",
+        "decision": "PASS (legs): keep 5-inch as designed and fit the retractable legs"
+      }
+    }
+  ]
+}

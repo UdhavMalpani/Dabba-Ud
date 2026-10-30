@@ -1,0 +1,613 @@
+[
+  {
+    "run_id": "A",
+    "title": "Stage 1 bare quad: ALT_HOLD 30 s, LOITER 60 s, LAND (2 m/s breeze)",
+    "vehicle": "Stage 1 Bare Quad (open props, legs, 180 g payload)",
+    "mass_kg": 1.131,
+    "inertia_kgm2": [
+      0.00537,
+      0.00736,
+      0.00652
+    ],
+    "inertia_source": "mass_cg_inertia_audit.json (/inertia_headline/stage 1 bare (legs down, payload in))",
+    "thrust_multiplier": 1.0,
+    "wind_mean_ms": 2.0,
+    "flight_time_s": 111.8,
+    "mah_used": 323.3,
+    "batt_remaining_pct_end": 87.6,
+    "min_voltage_v": 24.22,
+    "max_current_a": 18.0,
+    "hover_current_mean_a": 10.37,
+    "hover_thr_out_mean": 0.1531,
+    "thr_hover_learned_end": 0.1561,
+    "max_alt_m": 5.11,
+    "max_dist_home_m": 1.5,
+    "max_lean_deg": 12.8,
+    "xtrack_max_m": null,
+    "xtrack_p95_m": null,
+    "landing_pos_err_m": 0.67,
+    "events": [
+      [
+        0.0,
+        "ARMED"
+      ],
+      [
+        2.64,
+        "TAKEOFF complete 3 m"
+      ],
+      [
+        112.97,
+        "LANDED + DISARMED (87.6 % left)"
+      ]
+    ],
+    "log_file": "outputs/logs/stage1_flight_telemetry.csv"
+  },
+  {
+    "run_id": "B0",
+    "title": "Stage 2 enclosed: ALT_HOLD 30 s, LOITER 60 s in 15 km/h wind",
+    "vehicle": "Stage 2 Enclosed 5-inch (retractable legs)",
+    "mass_kg": 1.9049,
+    "inertia_kgm2": [
+      0.01346,
+      0.01495,
+      0.02455
+    ],
+    "inertia_source": "mass_cg_inertia_audit.json (/inertia_headline/stage 2 enclosed legs up (payload in))",
+    "thrust_multiplier": 0.9634,
+    "wind_mean_ms": 4.166666666666667,
+    "flight_time_s": 112.5,
+    "mah_used": 909.0,
+    "batt_remaining_pct_end": 65.0,
+    "min_voltage_v": 22.8,
+    "max_current_a": 50.5,
+    "hover_current_mean_a": 29.26,
+    "hover_thr_out_mean": 0.3089,
+    "thr_hover_learned_end": 0.3202,
+    "max_alt_m": 5.26,
+    "max_dist_home_m": 5.0,
+    "max_lean_deg": 29.1,
+    "xtrack_max_m": null,
+    "xtrack_p95_m": null,
+    "landing_pos_err_m": 0.44,
+    "events": [
+      [
+        0.0,
+        "ARMED"
+      ],
+      [
+        2.63,
+        "TAKEOFF complete 3 m"
+      ],
+      [
+        113.68,
+        "LANDED + DISARMED (65.0 % left)"
+      ]
+    ],
+    "log_file": "outputs/logs/stage2_hover_loiter_telemetry.csv"
+  },
+  {
+    "run_id": "B",
+    "title": "Stage 2 enclosed: full AUTO mission, 15 km/h wind + turbulence",
+    "vehicle": "Stage 2 Enclosed 5-inch (retractable legs)",
+    "mass_kg": 1.9049,
+    "inertia_kgm2": [
+      0.01346,
+      0.01495,
+      0.02455
+    ],
+    "inertia_source": "mass_cg_inertia_audit.json (/inertia_headline/stage 2 enclosed legs up (payload in))",
+    "thrust_multiplier": 0.9634,
+    "wind_mean_ms": 4.166666666666667,
+    "flight_time_s": 128.7,
+    "mah_used": 1082.8,
+    "batt_remaining_pct_end": 58.4,
+    "min_voltage_v": 22.52,
+    "max_current_a": 35.0,
+    "hover_current_mean_a": 29.97,
+    "hover_thr_out_mean": 0.3169,
+    "thr_hover_learned_end": 0.3242,
+    "max_alt_m": 12.26,
+    "max_dist_home_m": 41.2,
+    "max_lean_deg": 27.5,
+    "xtrack_max_m": 2.267,
+    "xtrack_p95_m": 1.453,
+    "landing_pos_err_m": 0.45,
+    "events": [
+      [
+        0.0,
+        "ARMED"
+      ],
+      [
+        4.29,
+        "GEAR retract (alt 5.0 m)"
+      ],
+      [
+        8.79,
+        "TAKEOFF complete 12 m"
+      ],
+      [
+        8.79,
+        "MISSION gear RETRACT (seq 2)"
+      ],
+      [
+        20.55,
+        "Reached WP seq 3 (err 0.95 m)"
+      ],
+      [
+        42.02,
+        "Reached WP seq 4 (err 0.98 m)"
+      ],
+      [
+        54.87,
+        "Reached WP seq 5 (err 0.94 m)"
+      ],
+      [
+        67.69,
+        "Reached WP seq 6 (err 0.83 m)"
+      ],
+      [
+        85.01,
+        "Reached WP seq 7 (err 1.00 m)"
+      ],
+      [
+        100.32,
+        "Reached WP seq 8 (err 0.96 m)"
+      ],
+      [
+        105.32,
+        "DO_LAND_START marker (seq 9)"
+      ],
+      [
+        110.98,
+        "Reached WP seq 10 (err 0.50 m)"
+      ],
+      [
+        112.98,
+        "MISSION gear DEPLOY (seq 11)"
+      ],
+      [
+        129.88,
+        "LANDED + DISARMED (58.4 % left)"
+      ]
+    ],
+    "log_file": "outputs/logs/stage2_mission_telemetry.csv"
+  },
+  {
+    "run_id": "B25",
+    "title": "Stage 2 enclosed: same mission at WPNAV_SPEED 2.5 m/s (wind mitigation)",
+    "vehicle": "Stage 2 Enclosed 5-inch (retractable legs)",
+    "mass_kg": 1.9049,
+    "inertia_kgm2": [
+      0.01346,
+      0.01495,
+      0.02455
+    ],
+    "inertia_source": "mass_cg_inertia_audit.json (/inertia_headline/stage 2 enclosed legs up (payload in))",
+    "thrust_multiplier": 0.9634,
+    "wind_mean_ms": 4.166666666666667,
+    "flight_time_s": 130.9,
+    "mah_used": 1099.0,
+    "batt_remaining_pct_end": 57.7,
+    "min_voltage_v": 22.5,
+    "max_current_a": 35.5,
+    "hover_current_mean_a": 29.84,
+    "hover_thr_out_mean": 0.3163,
+    "thr_hover_learned_end": 0.3271,
+    "max_alt_m": 12.25,
+    "max_dist_home_m": 41.3,
+    "max_lean_deg": 27.6,
+    "xtrack_max_m": 2.426,
+    "xtrack_p95_m": 1.381,
+    "landing_pos_err_m": 0.52,
+    "events": [
+      [
+        0.0,
+        "ARMED"
+      ],
+      [
+        4.29,
+        "GEAR retract (alt 5.0 m)"
+      ],
+      [
+        8.79,
+        "TAKEOFF complete 12 m"
+      ],
+      [
+        8.79,
+        "MISSION gear RETRACT (seq 2)"
+      ],
+      [
+        20.51,
+        "Reached WP seq 3 (err 0.98 m)"
+      ],
+      [
+        42.02,
+        "Reached WP seq 4 (err 0.96 m)"
+      ],
+      [
+        56.01,
+        "Reached WP seq 5 (err 0.77 m)"
+      ],
+      [
+        70.0,
+        "Reached WP seq 6 (err 0.95 m)"
+      ],
+      [
+        86.98,
+        "Reached WP seq 7 (err 0.89 m)"
+      ],
+      [
+        102.46,
+        "Reached WP seq 8 (err 0.71 m)"
+      ],
+      [
+        107.46,
+        "DO_LAND_START marker (seq 9)"
+      ],
+      [
+        113.45,
+        "Reached WP seq 10 (err 0.80 m)"
+      ],
+      [
+        115.45,
+        "MISSION gear DEPLOY (seq 11)"
+      ],
+      [
+        132.02,
+        "LANDED + DISARMED (57.7 % left)"
+      ]
+    ],
+    "log_file": "outputs/logs/stage2_mission_slow_2p5ms_telemetry.csv"
+  },
+  {
+    "run_id": "B10",
+    "title": "Stage 2 enclosed: same mission in 10 km/h wind (operating-limit study)",
+    "vehicle": "Stage 2 Enclosed 5-inch (retractable legs)",
+    "mass_kg": 1.9049,
+    "inertia_kgm2": [
+      0.01346,
+      0.01495,
+      0.02455
+    ],
+    "inertia_source": "mass_cg_inertia_audit.json (/inertia_headline/stage 2 enclosed legs up (payload in))",
+    "thrust_multiplier": 0.9634,
+    "wind_mean_ms": 2.7777777777777777,
+    "flight_time_s": 117.7,
+    "mah_used": 935.5,
+    "batt_remaining_pct_end": 64.0,
+    "min_voltage_v": 22.76,
+    "max_current_a": 34.4,
+    "hover_current_mean_a": 27.97,
+    "hover_thr_out_mean": 0.2984,
+    "thr_hover_learned_end": 0.306,
+    "max_alt_m": 12.25,
+    "max_dist_home_m": 40.5,
+    "max_lean_deg": 27.6,
+    "xtrack_max_m": 1.104,
+    "xtrack_p95_m": 0.717,
+    "landing_pos_err_m": 0.34,
+    "events": [
+      [
+        0.0,
+        "ARMED"
+      ],
+      [
+        4.29,
+        "GEAR retract (alt 5.0 m)"
+      ],
+      [
+        8.79,
+        "TAKEOFF complete 12 m"
+      ],
+      [
+        8.79,
+        "MISSION gear RETRACT (seq 2)"
+      ],
+      [
+        17.34,
+        "Reached WP seq 3 (err 0.31 m)"
+      ],
+      [
+        33.94,
+        "Reached WP seq 4 (err 0.98 m)"
+      ],
+      [
+        47.87,
+        "Reached WP seq 5 (err 0.99 m)"
+      ],
+      [
+        61.25,
+        "Reached WP seq 6 (err 0.96 m)"
+      ],
+      [
+        76.19,
+        "Reached WP seq 7 (err 0.75 m)"
+      ],
+      [
+        89.0,
+        "Reached WP seq 8 (err 0.53 m)"
+      ],
+      [
+        94.0,
+        "DO_LAND_START marker (seq 9)"
+      ],
+      [
+        99.66,
+        "Reached WP seq 10 (err 0.73 m)"
+      ],
+      [
+        101.66,
+        "MISSION gear DEPLOY (seq 11)"
+      ],
+      [
+        118.89,
+        "LANDED + DISARMED (64.0 % left)"
+      ]
+    ],
+    "log_file": "outputs/logs/stage2_mission_wind10kmh_telemetry.csv"
+  },
+  {
+    "run_id": "C1",
+    "title": "Failsafe: RC loss at t = 45 s -> RTL",
+    "vehicle": "Stage 2 Enclosed 5-inch (retractable legs)",
+    "mass_kg": 1.9049,
+    "inertia_kgm2": [
+      0.01346,
+      0.01495,
+      0.02455
+    ],
+    "inertia_source": "mass_cg_inertia_audit.json (/inertia_headline/stage 2 enclosed legs up (payload in))",
+    "thrust_multiplier": 0.9634,
+    "wind_mean_ms": 4.166666666666667,
+    "flight_time_s": 94.8,
+    "mah_used": 772.1,
+    "batt_remaining_pct_end": 70.3,
+    "min_voltage_v": 23.04,
+    "max_current_a": 38.9,
+    "hover_current_mean_a": 28.81,
+    "hover_thr_out_mean": 0.3006,
+    "thr_hover_learned_end": 0.3095,
+    "max_alt_m": 15.18,
+    "max_dist_home_m": 41.1,
+    "max_lean_deg": 28.1,
+    "xtrack_max_m": 1.816,
+    "xtrack_p95_m": 1.697,
+    "landing_pos_err_m": 0.84,
+    "events": [
+      [
+        0.0,
+        "ARMED"
+      ],
+      [
+        4.27,
+        "GEAR retract (alt 5.0 m)"
+      ],
+      [
+        8.76,
+        "TAKEOFF complete 12 m"
+      ],
+      [
+        8.76,
+        "MISSION gear RETRACT (seq 2)"
+      ],
+      [
+        19.06,
+        "Reached WP seq 3 (err 0.99 m)"
+      ],
+      [
+        37.09,
+        "Reached WP seq 4 (err 0.99 m)"
+      ],
+      [
+        45.0,
+        "FAILSAFE radio (RC lost)"
+      ],
+      [
+        45.0,
+        "MODE RTL (RC failsafe)"
+      ],
+      [
+        87.25,
+        "GEAR deploy (alt 3.0 m)"
+      ],
+      [
+        95.97,
+        "LANDED + DISARMED (70.3 % left)"
+      ]
+    ],
+    "log_file": "outputs/logs/stage2_failsafe_rc_loss_telemetry.csv"
+  },
+  {
+    "run_id": "C2",
+    "title": "Failsafe: low battery (pack starts at 42 %) -> RTL -> LAND",
+    "vehicle": "Stage 2 Enclosed 5-inch (retractable legs)",
+    "mass_kg": 1.9049,
+    "inertia_kgm2": [
+      0.01346,
+      0.01495,
+      0.02455
+    ],
+    "inertia_source": "mass_cg_inertia_audit.json (/inertia_headline/stage 2 enclosed legs up (payload in))",
+    "thrust_multiplier": 0.9634,
+    "wind_mean_ms": 4.166666666666667,
+    "flight_time_s": 78.4,
+    "mah_used": 2218.4,
+    "batt_remaining_pct_end": 14.7,
+    "min_voltage_v": 21.04,
+    "max_current_a": 41.2,
+    "hover_current_mean_a": 32.84,
+    "hover_thr_out_mean": 0.3738,
+    "thr_hover_learned_end": 0.3687,
+    "max_alt_m": 15.1,
+    "max_dist_home_m": 22.0,
+    "max_lean_deg": 27.4,
+    "xtrack_max_m": 3.191,
+    "xtrack_p95_m": 3.051,
+    "landing_pos_err_m": 0.14,
+    "events": [
+      [
+        0.0,
+        "ARMED"
+      ],
+      [
+        4.27,
+        "GEAR retract (alt 5.0 m)"
+      ],
+      [
+        8.82,
+        "TAKEOFF complete 12 m"
+      ],
+      [
+        8.82,
+        "MISSION gear RETRACT (seq 2)"
+      ],
+      [
+        27.08,
+        "Reached WP seq 3 (err 0.96 m)"
+      ],
+      [
+        32.76,
+        "FAILSAFE battery LOW (780 mAh, 22.26 V rest)"
+      ],
+      [
+        32.76,
+        "MODE RTL (battery low)"
+      ],
+      [
+        70.81,
+        "FAILSAFE battery CRITICAL (450 mAh, 21.74 V rest)"
+      ],
+      [
+        70.81,
+        "MODE LAND (battery critical)"
+      ],
+      [
+        71.51,
+        "GEAR deploy (alt 3.0 m)"
+      ],
+      [
+        79.68,
+        "LANDED + DISARMED (14.7 % left)"
+      ]
+    ],
+    "log_file": "outputs/logs/stage2_failsafe_low_battery_telemetry.csv"
+  },
+  {
+    "run_id": "C3",
+    "title": "Failsafe: geofence (rogue WP 150 m out, FENCE_RADIUS 120 m) -> RTL",
+    "vehicle": "Stage 2 Enclosed 5-inch (retractable legs)",
+    "mass_kg": 1.9049,
+    "inertia_kgm2": [
+      0.01346,
+      0.01495,
+      0.02455
+    ],
+    "inertia_source": "mass_cg_inertia_audit.json (/inertia_headline/stage 2 enclosed legs up (payload in))",
+    "thrust_multiplier": 0.9634,
+    "wind_mean_ms": 4.166666666666667,
+    "flight_time_s": 148.2,
+    "mah_used": 1250.3,
+    "batt_remaining_pct_end": 51.9,
+    "min_voltage_v": 22.34,
+    "max_current_a": 40.4,
+    "hover_current_mean_a": 28.92,
+    "hover_thr_out_mean": 0.3036,
+    "thr_hover_learned_end": 0.3173,
+    "max_alt_m": 14.89,
+    "max_dist_home_m": 122.2,
+    "max_lean_deg": 30.6,
+    "xtrack_max_m": 2.19,
+    "xtrack_p95_m": 1.681,
+    "landing_pos_err_m": 0.28,
+    "events": [
+      [
+        0.0,
+        "ARMED"
+      ],
+      [
+        4.28,
+        "GEAR retract (alt 5.0 m)"
+      ],
+      [
+        8.81,
+        "TAKEOFF complete 12 m"
+      ],
+      [
+        8.81,
+        "MISSION gear RETRACT (seq 2)"
+      ],
+      [
+        23.45,
+        "Reached WP seq 3 (err 0.94 m)"
+      ],
+      [
+        40.78,
+        "Reached WP seq 4 (err 0.99 m)"
+      ],
+      [
+        75.31,
+        "FENCE breach (120.0 m from home, alt 12.1 m)"
+      ],
+      [
+        75.31,
+        "MODE RTL (geofence)"
+      ],
+      [
+        141.23,
+        "GEAR deploy (alt 3.0 m)"
+      ],
+      [
+        149.38,
+        "LANDED + DISARMED (51.9 % left)"
+      ]
+    ],
+    "log_file": "outputs/logs/stage2_failsafe_geofence_telemetry.csv"
+  },
+  {
+    "run_id": "D",
+    "title": "Stage 2 still-air endurance hover to 80 % of pack used",
+    "vehicle": "Stage 2 Enclosed 5-inch (retractable legs)",
+    "mass_kg": 1.9049,
+    "inertia_kgm2": [
+      0.01346,
+      0.01495,
+      0.02455
+    ],
+    "inertia_source": "mass_cg_inertia_audit.json (/inertia_headline/stage 2 enclosed legs up (payload in))",
+    "thrust_multiplier": 0.9634,
+    "wind_mean_ms": 0.0,
+    "flight_time_s": 270.9,
+    "mah_used": 2080.0,
+    "batt_remaining_pct_end": 20.0,
+    "min_voltage_v": 21.36,
+    "max_current_a": 31.4,
+    "hover_current_mean_a": 27.68,
+    "hover_thr_out_mean": 0.3127,
+    "thr_hover_learned_end": 0.3504,
+    "max_alt_m": 8.3,
+    "max_dist_home_m": 0.8,
+    "max_lean_deg": 2.0,
+    "xtrack_max_m": null,
+    "xtrack_p95_m": null,
+    "landing_pos_err_m": 0.41,
+    "events": [
+      [
+        0.0,
+        "ARMED"
+      ],
+      [
+        4.26,
+        "GEAR retract (alt 5.0 m)"
+      ],
+      [
+        6.02,
+        "TAKEOFF complete 8 m"
+      ],
+      [
+        271.01,
+        "Endurance stop at 80 % used"
+      ]
+    ],
+    "log_file": "outputs/logs/stage2_endurance_hover_telemetry.csv"
+  }
+]

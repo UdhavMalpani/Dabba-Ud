@@ -1,0 +1,104 @@
+# Project 8 - ArduPilot SITL parameter file - STAGE 1 BARE 5-inch quad (~1.13 kg)
+# Self-contained SITL file: do NOT also load config/ardupilot/*.param (those set SERIAL3/6 for the real
+# SpeedyBee board, which would disable the SITL simulated GPS on SERIAL3).
+#
+# Run from the ardupilot source tree (Linux/WSL), IIITH sports-ground home 17.4455,78.3489,540 m ASL, heading 0:
+#   Tools/autotest/sim_vehicle.py -v ArduCopter -f quad --model "quad:/abs/path/UAV-Design/config/sitl/project8_5in_bare.json" \
+#       --custom-location=17.4455,78.3489,540,0 -w \
+#       --add-param-file=/abs/path/UAV-Design/config/sitl/quad_stage1_bare.parm --console --map
+# If the frame-JSON model path is not accepted by your ArduPilot version, drop the --model argument
+# (stock "quad" physics; mass then is NOT 1.13 kg - only control/failsafe logic is representative).
+#
+# SITL notes:
+#   * SITL mass/inertia/thrust come from the frame JSON (--model), not from parameters.
+#   * Failsafe tests at the MAVProxy prompt:  param set SIM_RC_FAIL 1  (RC loss -> expect RTL)
+#                                             param set SIM_RC_FAIL 0  (restore)
+#   * VERSION NOTES: SIM_GPS_* became SIM_GPS1_* in 4.6; SIM_ACC1_RND/SIM_GYR1_RND are the 4.x per-IMU names.
+
+# ---------------- Simulated environment ----------------
+# 6S full pack
+SIM_BATT_VOLTAGE,25.2
+SIM_BATT_CAP_AH,2.6
+# Calm-ish day for Stage 1 hover/loiter checks: 2 m/s from the west, light turbulence
+SIM_WIND_SPD,2
+SIM_WIND_DIR,270
+SIM_WIND_TURB,0.5
+# Simulated bidirectional-DShot RPM so INS_HNTCH_MODE=3 tracks in SITL
+SIM_ESC_TELEM,1
+# Vibration: noise + motor-driven vibration (exercises the harmonic notch and VIBE logging)
+SIM_ACC1_RND,0.5
+SIM_GYR1_RND,0.05
+SIM_VIB_MOT_MAX,200
+SIM_BARO_RND,0.1
+SIM_GPS_NUMSATS,14
+SIM_GPS_HDOP,90
+SIM_GPS_NOISE,0.3
+
+# ---------------- Vehicle (mirrors stage1_bare_5in.param, minus board-specific I/O) ----------------
+FRAME_CLASS,1
+FRAME_TYPE,1
+MOT_SPIN_ARM,0.07
+MOT_SPIN_MIN,0.10
+MOT_SPIN_MAX,0.95
+MOT_THST_EXPO,0.65
+MOT_THST_HOVER,0.20
+MOT_HOVER_LEARN,2
+MOT_BAT_VOLT_MAX,25.2
+MOT_BAT_VOLT_MIN,19.8
+MOT_BAT_CURR_MAX,160
+BATT_MONITOR,4
+BATT_CAPACITY,2600
+BATT_LOW_VOLT,21.0
+BATT_CRT_VOLT,19.8
+BATT_FS_VOLTSRC,1
+BATT_LOW_MAH,780
+BATT_CRT_MAH,450
+BATT_FS_LOW_ACT,2
+BATT_FS_CRT_ACT,1
+INS_HNTCH_ENABLE,1
+INS_HNTCH_MODE,3
+INS_HNTCH_REF,1
+INS_HNTCH_FREQ,200
+INS_HNTCH_BW,100
+INS_HNTCH_ATT,40
+INS_HNTCH_HMNCS,5
+INS_GYRO_FILTER,80
+ATC_RAT_RLL_P,0.085
+ATC_RAT_RLL_I,0.085
+ATC_RAT_RLL_D,0.0018
+ATC_RAT_PIT_P,0.085
+ATC_RAT_PIT_I,0.085
+ATC_RAT_PIT_D,0.0018
+ATC_RAT_YAW_P,0.18
+ATC_RAT_YAW_I,0.018
+ATC_ACCEL_R_MAX,72000
+ATC_ACCEL_P_MAX,72000
+ATC_ACCEL_Y_MAX,18000
+ANGLE_MAX,3500
+LOIT_SPEED,500
+WPNAV_SPEED,350
+WPNAV_ACCEL,120
+WPNAV_RADIUS,100
+RTL_ALT,1000
+RTL_SPEED,300
+LAND_SPEED,40
+FS_THR_ENABLE,1
+FS_THR_VALUE,975
+FS_GCS_ENABLE,1
+FS_EKF_ACTION,1
+FENCE_ENABLE,1
+FENCE_TYPE,7
+FENCE_ACTION,1
+FENCE_RADIUS,100
+FENCE_ALT_MAX,30
+FLTMODE_CH,5
+FLTMODE1,0
+FLTMODE2,2
+FLTMODE3,5
+FLTMODE4,15
+FLTMODE5,6
+FLTMODE6,9
+RC7_OPTION,31
+GPS_HDOP_GOOD,140
+LOG_BITMASK,176126
+AUTOTUNE_AXES,7

@@ -1,0 +1,528 @@
+{
+  "overall": {
+    "G4_vibration": "PASS",
+    "G5_G6_hover_and_trim": "PASS",
+    "G7_alt_hold": "PASS",
+    "G8_autotune": "N/A",
+    "G9_loiter": "PASS",
+    "G10_auto_waypoints_and_gear": "PASS",
+    "G11_mission_battery_reserve": "PASS",
+    "FS_failsafe_response": "PASS"
+  },
+  "logs": {
+    "A": {
+      "log": "outputs\\logs\\stage1_flight_telemetry.csv",
+      "stage": "stage1",
+      "source": "sim_csv",
+      "gates": {
+        "G4_vibration": {
+          "verdict": "PASS",
+          "max_1s_mean_vibe_ms2": {
+            "x": 6.48,
+            "y": 6.96,
+            "z": 9.1
+          },
+          "median_vibe_ms2": {
+            "x": 5.82,
+            "y": 6.2,
+            "z": 8.59
+          },
+          "clip_samples": 0,
+          "limit_ms2": 15.0
+        },
+        "G5_G6_hover_and_trim": {
+          "verdict": "PASS",
+          "mass_g_assumed": 1130.95,
+          "hover_current_measured_raw_a": 10.37,
+          "mean_hover_tilt_deg": 5.7,
+          "hover_current_measured_a": 10.29,
+          "hover_voltage_measured_v": 24.64,
+          "hover_current_pred_0pct_a": 10.9,
+          "hover_current_pred_20pct_a": 13.0,
+          "hover_power_vs_ideal_duct_model_kappa_pct": 5.1,
+          "thr_out_hover_mean": 0.153,
+          "mot_thst_hover_learned_end": 0.156,
+          "criterion": "lean-corrected hover current <= 1.10 x model (+20 % box loss for Stage 2, 0 % for Stage 1), scaled to 22.2 V"
+        },
+        "G7_alt_hold": {
+          "verdict": "PASS",
+          "segment_source": "ALT_HOLD",
+          "max_abs_err_m": 0.22,
+          "rms_err_m": 0.055,
+          "tolerance_m": 0.5
+        },
+        "G8_autotune": {
+          "verdict": "N/A",
+          "note": "Gate 8 (AUTOTUNE) is flown by the pilot; not observable in this log"
+        },
+        "G9_loiter": {
+          "verdict": "PASS",
+          "duration_s": 61.8,
+          "max_radius_m": 0.344,
+          "p95_radius_m": 0.243,
+          "within_1m_radius_strict": true,
+          "radius_limit_m": 2.0
+        },
+        "G10_auto_waypoints_and_gear": {
+          "verdict": "N/A"
+        },
+        "G11_mission_battery_reserve": {
+          "verdict": "N/A"
+        },
+        "FS_failsafe_response": {
+          "verdict": "N/A"
+        }
+      }
+    },
+    "B0": {
+      "log": "outputs\\logs\\stage2_hover_loiter_telemetry.csv",
+      "stage": "stage2",
+      "source": "sim_csv",
+      "gates": {
+        "G4_vibration": {
+          "verdict": "PASS",
+          "max_1s_mean_vibe_ms2": {
+            "x": 9.42,
+            "y": 10.04,
+            "z": 13.47
+          },
+          "median_vibe_ms2": {
+            "x": 8.72,
+            "y": 9.2,
+            "z": 12.83
+          },
+          "clip_samples": 0,
+          "limit_ms2": 15.0
+        },
+        "G5_G6_hover_and_trim": {
+          "verdict": "PASS",
+          "mass_g_assumed": 1904.9,
+          "hover_current_measured_raw_a": 29.29,
+          "mean_hover_tilt_deg": 19.3,
+          "hover_current_measured_a": 26.74,
+          "hover_voltage_measured_v": 23.59,
+          "hover_current_pred_0pct_a": 23.3,
+          "hover_current_pred_20pct_a": 27.8,
+          "hover_power_vs_ideal_duct_model_kappa_pct": 22.6,
+          "thr_out_hover_mean": 0.309,
+          "mot_thst_hover_learned_end": 0.32,
+          "criterion": "lean-corrected hover current <= 1.10 x model (+20 % box loss for Stage 2, 0 % for Stage 1), scaled to 22.2 V"
+        },
+        "G7_alt_hold": {
+          "verdict": "PASS",
+          "segment_source": "ALT_HOLD",
+          "max_abs_err_m": 0.158,
+          "rms_err_m": 0.053,
+          "tolerance_m": 0.5
+        },
+        "G8_autotune": {
+          "verdict": "N/A",
+          "note": "Gate 8 (AUTOTUNE) is flown by the pilot; not observable in this log"
+        },
+        "G9_loiter": {
+          "verdict": "PASS",
+          "duration_s": 61.8,
+          "max_radius_m": 1.073,
+          "p95_radius_m": 0.761,
+          "within_1m_radius_strict": false,
+          "radius_limit_m": 2.0
+        },
+        "G10_auto_waypoints_and_gear": {
+          "verdict": "N/A"
+        },
+        "G11_mission_battery_reserve": {
+          "verdict": "N/A"
+        },
+        "FS_failsafe_response": {
+          "verdict": "N/A"
+        }
+      }
+    },
+    "B": {
+      "log": "outputs\\logs\\stage2_mission_telemetry.csv",
+      "stage": "stage2",
+      "source": "sim_csv",
+      "gates": {
+        "G4_vibration": {
+          "verdict": "PASS",
+          "max_1s_mean_vibe_ms2": {
+            "x": 9.7,
+            "y": 9.93,
+            "z": 13.67
+          },
+          "median_vibe_ms2": {
+            "x": 8.8,
+            "y": 9.26,
+            "z": 12.91
+          },
+          "clip_samples": 0,
+          "limit_ms2": 15.0
+        },
+        "G5_G6_hover_and_trim": {
+          "verdict": "PASS",
+          "mass_g_assumed": 1904.9,
+          "hover_current_measured_raw_a": 29.99,
+          "mean_hover_tilt_deg": 20.8,
+          "hover_current_measured_a": 26.91,
+          "hover_voltage_measured_v": 23.41,
+          "hover_current_pred_0pct_a": 23.3,
+          "hover_current_pred_20pct_a": 27.8,
+          "hover_power_vs_ideal_duct_model_kappa_pct": 22.4,
+          "thr_out_hover_mean": 0.317,
+          "mot_thst_hover_learned_end": 0.324,
+          "criterion": "lean-corrected hover current <= 1.10 x model (+20 % box loss for Stage 2, 0 % for Stage 1), scaled to 22.2 V"
+        },
+        "G7_alt_hold": {
+          "verdict": "N/A"
+        },
+        "G8_autotune": {
+          "verdict": "N/A",
+          "note": "Gate 8 (AUTOTUNE) is flown by the pilot; not observable in this log"
+        },
+        "G9_loiter": {
+          "verdict": "N/A",
+          "note": "no LOITER segment >= 60 s"
+        },
+        "G10_auto_waypoints_and_gear": {
+          "waypoint_arrivals": [
+            {
+              "seq": 3,
+              "min_dist_m": 0.172
+            },
+            {
+              "seq": 4,
+              "min_dist_m": 0.023
+            },
+            {
+              "seq": 5,
+              "min_dist_m": 0.056
+            },
+            {
+              "seq": 6,
+              "min_dist_m": 0.07
+            },
+            {
+              "seq": 7,
+              "min_dist_m": 0.195
+            },
+            {
+              "seq": 8,
+              "min_dist_m": 0.084
+            },
+            {
+              "seq": 10,
+              "min_dist_m": 0.032
+            }
+          ],
+          "waypoints_ok": true,
+          "wp_tolerance_m": 2.0,
+          "xtrack_p95_m": 1.453,
+          "xtrack_max_m": 2.267,
+          "xtrack_note": "cross-track is informational; the graded criterion is waypoint passage <= 2 m",
+          "gear_up_fraction_in_cruise": 0.991,
+          "gear_down_1s_before_touchdown": true,
+          "gear_deploy_start_alt_m": 6.2,
+          "gear_retract_start_alt_m": 5.09,
+          "gear_rule": "retract > 5.0 m, deploy < 3.0 m (LGR_*), or earlier by mission MAV_CMD_AIRFRAME_CONFIGURATION",
+          "verdict": "PASS"
+        },
+        "G11_mission_battery_reserve": {
+          "verdict": "PASS",
+          "battery_at_disarm_pct": 58.4,
+          "limit_pct": 25.0,
+          "min_voltage_v": 22.52,
+          "flight_time_s": 129.8
+        },
+        "FS_failsafe_response": {
+          "verdict": "N/A"
+        }
+      }
+    },
+    "C1": {
+      "log": "outputs\\logs\\stage2_failsafe_rc_loss_telemetry.csv",
+      "stage": "stage2",
+      "source": "sim_csv",
+      "gates": {
+        "G4_vibration": {
+          "verdict": "PASS",
+          "max_1s_mean_vibe_ms2": {
+            "x": 9.5,
+            "y": 9.9,
+            "z": 13.54
+          },
+          "median_vibe_ms2": {
+            "x": 8.76,
+            "y": 9.24,
+            "z": 12.82
+          },
+          "clip_samples": 0,
+          "limit_ms2": 15.0
+        },
+        "G5_G6_hover_and_trim": {
+          "verdict": "PASS",
+          "mass_g_assumed": 1904.9,
+          "hover_current_measured_raw_a": 28.2,
+          "mean_hover_tilt_deg": 17.5,
+          "hover_current_measured_a": 26.1,
+          "hover_voltage_measured_v": 24.04,
+          "hover_current_pred_0pct_a": 23.3,
+          "hover_current_pred_20pct_a": 27.8,
+          "hover_power_vs_ideal_duct_model_kappa_pct": 21.9,
+          "thr_out_hover_mean": 0.294,
+          "mot_thst_hover_learned_end": 0.309,
+          "criterion": "lean-corrected hover current <= 1.10 x model (+20 % box loss for Stage 2, 0 % for Stage 1), scaled to 22.2 V"
+        },
+        "G7_alt_hold": {
+          "verdict": "N/A"
+        },
+        "G8_autotune": {
+          "verdict": "N/A",
+          "note": "Gate 8 (AUTOTUNE) is flown by the pilot; not observable in this log"
+        },
+        "G9_loiter": {
+          "verdict": "N/A",
+          "note": "no LOITER segment >= 60 s"
+        },
+        "G10_auto_waypoints_and_gear": {
+          "verdict": "N/A",
+          "note": "mission intentionally aborted by an injected failsafe; see FS gate"
+        },
+        "G11_mission_battery_reserve": {
+          "verdict": "N/A",
+          "note": "mission intentionally aborted by an injected failsafe; see FS gate"
+        },
+        "FS_failsafe_response": {
+          "verdict": "PASS",
+          "trigger": "FAILSAFE radio (RC lost); MODE RTL (RC failsafe)",
+          "trigger_t_s": 45.1,
+          "mode_after_1s": "RTL",
+          "landing_dist_from_home_m": 0.65,
+          "disarmed": true,
+          "battery_at_disarm_pct": 70.3,
+          "all_events": [
+            "ARMED",
+            "GEAR retract (alt 5.0 m)",
+            "TAKEOFF complete 12 m; MISSION gear RETRACT (seq 2)",
+            "Reached WP seq 3 (err 0.99 m)",
+            "Reached WP seq 4 (err 0.99 m)",
+            "FAILSAFE radio (RC lost); MODE RTL (RC failsafe)",
+            "GEAR deploy (alt 3.0 m)",
+            "LANDED + DISARMED (70.3 % left)"
+          ]
+        }
+      }
+    },
+    "C2": {
+      "log": "outputs\\logs\\stage2_failsafe_low_battery_telemetry.csv",
+      "stage": "stage2",
+      "source": "sim_csv",
+      "gates": {
+        "G4_vibration": {
+          "verdict": "PASS",
+          "max_1s_mean_vibe_ms2": {
+            "x": 10.04,
+            "y": 10.37,
+            "z": 14.23
+          },
+          "median_vibe_ms2": {
+            "x": 9.29,
+            "y": 9.73,
+            "z": 13.54
+          },
+          "clip_samples": 0,
+          "limit_ms2": 15.0
+        },
+        "G5_G6_hover_and_trim": {
+          "verdict": "PASS",
+          "mass_g_assumed": 1904.9,
+          "hover_current_measured_raw_a": 33.66,
+          "mean_hover_tilt_deg": 25.5,
+          "hover_current_measured_a": 28.72,
+          "hover_voltage_measured_v": 21.74,
+          "hover_current_pred_0pct_a": 23.3,
+          "hover_current_pred_20pct_a": 27.8,
+          "hover_power_vs_ideal_duct_model_kappa_pct": 21.3,
+          "thr_out_hover_mean": 0.378,
+          "mot_thst_hover_learned_end": 0.369,
+          "criterion": "lean-corrected hover current <= 1.10 x model (+20 % box loss for Stage 2, 0 % for Stage 1), scaled to 22.2 V"
+        },
+        "G7_alt_hold": {
+          "verdict": "N/A"
+        },
+        "G8_autotune": {
+          "verdict": "N/A",
+          "note": "Gate 8 (AUTOTUNE) is flown by the pilot; not observable in this log"
+        },
+        "G9_loiter": {
+          "verdict": "N/A",
+          "note": "no LOITER segment >= 60 s"
+        },
+        "G10_auto_waypoints_and_gear": {
+          "verdict": "N/A",
+          "note": "mission intentionally aborted by an injected failsafe; see FS gate"
+        },
+        "G11_mission_battery_reserve": {
+          "verdict": "N/A",
+          "note": "mission intentionally aborted by an injected failsafe; see FS gate"
+        },
+        "FS_failsafe_response": {
+          "verdict": "PASS",
+          "trigger": "FAILSAFE battery LOW (780 mAh, 22.26 V rest); MODE RTL (battery low)",
+          "trigger_t_s": 32.8,
+          "mode_after_1s": "RTL",
+          "landing_dist_from_home_m": 0.27,
+          "disarmed": true,
+          "battery_at_disarm_pct": 14.7,
+          "all_events": [
+            "ARMED",
+            "GEAR retract (alt 5.0 m)",
+            "TAKEOFF complete 12 m; MISSION gear RETRACT (seq 2)",
+            "Reached WP seq 3 (err 0.96 m)",
+            "FAILSAFE battery LOW (780 mAh, 22.26 V rest); MODE RTL (battery low)",
+            "FAILSAFE battery CRITICAL (450 mAh, 21.74 V rest); MODE LAND (battery critical)",
+            "GEAR deploy (alt 3.0 m)",
+            "LANDED + DISARMED (14.7 % left)"
+          ]
+        }
+      }
+    },
+    "C3": {
+      "log": "outputs\\logs\\stage2_failsafe_geofence_telemetry.csv",
+      "stage": "stage2",
+      "source": "sim_csv",
+      "gates": {
+        "G4_vibration": {
+          "verdict": "PASS",
+          "max_1s_mean_vibe_ms2": {
+            "x": 9.64,
+            "y": 10.05,
+            "z": 13.71
+          },
+          "median_vibe_ms2": {
+            "x": 8.81,
+            "y": 9.35,
+            "z": 13.03
+          },
+          "clip_samples": 0,
+          "limit_ms2": 15.0
+        },
+        "G5_G6_hover_and_trim": {
+          "verdict": "PASS",
+          "mass_g_assumed": 1904.9,
+          "hover_current_measured_raw_a": 28.31,
+          "mean_hover_tilt_deg": 17.4,
+          "hover_current_measured_a": 26.16,
+          "hover_voltage_measured_v": 24.03,
+          "hover_current_pred_0pct_a": 23.3,
+          "hover_current_pred_20pct_a": 27.8,
+          "hover_power_vs_ideal_duct_model_kappa_pct": 22.2,
+          "thr_out_hover_mean": 0.295,
+          "mot_thst_hover_learned_end": 0.317,
+          "criterion": "lean-corrected hover current <= 1.10 x model (+20 % box loss for Stage 2, 0 % for Stage 1), scaled to 22.2 V"
+        },
+        "G7_alt_hold": {
+          "verdict": "N/A"
+        },
+        "G8_autotune": {
+          "verdict": "N/A",
+          "note": "Gate 8 (AUTOTUNE) is flown by the pilot; not observable in this log"
+        },
+        "G9_loiter": {
+          "verdict": "N/A",
+          "note": "no LOITER segment >= 60 s"
+        },
+        "G10_auto_waypoints_and_gear": {
+          "verdict": "N/A",
+          "note": "mission intentionally aborted by an injected failsafe; see FS gate"
+        },
+        "G11_mission_battery_reserve": {
+          "verdict": "N/A",
+          "note": "mission intentionally aborted by an injected failsafe; see FS gate"
+        },
+        "FS_failsafe_response": {
+          "verdict": "PASS",
+          "trigger": "FENCE breach (120.0 m from home, alt 12.1 m); MODE RTL (geofence)",
+          "trigger_t_s": 75.4,
+          "mode_after_1s": "RTL",
+          "landing_dist_from_home_m": 0.31,
+          "disarmed": true,
+          "battery_at_disarm_pct": 51.9,
+          "all_events": [
+            "ARMED",
+            "GEAR retract (alt 5.0 m)",
+            "TAKEOFF complete 12 m; MISSION gear RETRACT (seq 2)",
+            "Reached WP seq 3 (err 0.94 m)",
+            "Reached WP seq 4 (err 0.99 m)",
+            "FENCE breach (120.0 m from home, alt 12.1 m); MODE RTL (geofence)",
+            "GEAR deploy (alt 3.0 m)",
+            "LANDED + DISARMED (51.9 % left)"
+          ]
+        }
+      }
+    },
+    "D": {
+      "log": "outputs\\logs\\stage2_endurance_hover_telemetry.csv",
+      "stage": "stage2",
+      "source": "sim_csv",
+      "gates": {
+        "G4_vibration": {
+          "verdict": "PASS",
+          "max_1s_mean_vibe_ms2": {
+            "x": 9.61,
+            "y": 9.95,
+            "z": 13.73
+          },
+          "median_vibe_ms2": {
+            "x": 8.76,
+            "y": 9.29,
+            "z": 12.9
+          },
+          "clip_samples": 0,
+          "limit_ms2": 15.0
+        },
+        "G5_G6_hover_and_trim": {
+          "verdict": "PASS",
+          "mass_g_assumed": 1904.9,
+          "hover_current_measured_raw_a": 27.68,
+          "mean_hover_tilt_deg": 0.8,
+          "hover_current_measured_a": 27.68,
+          "hover_voltage_measured_v": 22.78,
+          "hover_current_pred_0pct_a": 23.3,
+          "hover_current_pred_20pct_a": 27.8,
+          "hover_power_vs_ideal_duct_model_kappa_pct": 22.5,
+          "thr_out_hover_mean": 0.313,
+          "mot_thst_hover_learned_end": 0.35,
+          "criterion": "lean-corrected hover current <= 1.10 x model (+20 % box loss for Stage 2, 0 % for Stage 1), scaled to 22.2 V"
+        },
+        "G7_alt_hold": {
+          "verdict": "PASS",
+          "segment_source": "LOITER (no ALT_HOLD segment)",
+          "max_abs_err_m": 0.196,
+          "rms_err_m": 0.052,
+          "tolerance_m": 0.5
+        },
+        "G8_autotune": {
+          "verdict": "N/A",
+          "note": "Gate 8 (AUTOTUNE) is flown by the pilot; not observable in this log"
+        },
+        "G9_loiter": {
+          "verdict": "PASS",
+          "duration_s": 265.9,
+          "max_radius_m": 0.4,
+          "p95_radius_m": 0.241,
+          "within_1m_radius_strict": true,
+          "radius_limit_m": 2.0
+        },
+        "G10_auto_waypoints_and_gear": {
+          "verdict": "N/A"
+        },
+        "G11_mission_battery_reserve": {
+          "verdict": "N/A"
+        },
+        "FS_failsafe_response": {
+          "verdict": "N/A"
+        }
+      }
+    }
+  }
+}

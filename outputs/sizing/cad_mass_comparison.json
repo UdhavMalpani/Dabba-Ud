@@ -1,0 +1,350 @@
+{
+  "generator": "src/cad/generate_cad_stl.py",
+  "prop_d_mm": 127.0,
+  "tip_gaps_mm": [
+    1.0,
+    1.5,
+    2.0
+  ],
+  "assumptions": {
+    "slicer_model": "skin 0.84 mm over full surface printed solid (2 x 0.42 mm walls, ~0.8-1.0 mm top/bottom), remaining volume at 15 % infill; thin walls (<=1.7 mm) therefore print solid",
+    "densities_g_cm3": {
+      "PETG": 1.27,
+      "PLA": 1.24,
+      "PA-CF": 1.2,
+      "TPU": 1.21
+    },
+    "materials": "ducts PETG; grille, quarter, spine, legs PLA (leg hinge pins/servo mounts are separate PA-CF parts, not meshed)",
+    "not_meshed_in_stl": "duct arm-clamp bolt bosses, deck clearance holes over insert bosses, door hinge knuckles, side-panel camera aperture (all present in cad/project8_5in_parametric.scad)",
+    "quarter_print": "STL is the +X/+Y quarter; print 2 as-is and 2 mirrored in the slicer (payload-door notch is 30 x 20)",
+    "shells": "each part is a union of closed shells that touch but never overlap; volume = exact sum"
+  },
+  "parts": [
+    {
+      "part": "duct_ring_gap1.0",
+      "file": "outputs/stl/duct_ring_5in_gap1.0mm.stl",
+      "material": "PETG",
+      "density_g_cm3": 1.27,
+      "triangles": 10308,
+      "shells": 2,
+      "all_shells_closed": true,
+      "all_shell_volumes_positive": true,
+      "degenerate_tris": 0,
+      "volume_cm3": 63.81352204170606,
+      "surface_area_cm2": 473.231158259707,
+      "bbox_min_mm": [
+        -72.6,
+        -72.6,
+        0.0
+      ],
+      "bbox_max_mm": [
+        72.6,
+        72.6,
+        50.0
+      ],
+      "bbox_dims_mm": [
+        145.2,
+        145.2,
+        50.0
+      ],
+      "fits_bambu_p1s": true,
+      "expected_dims_mm": [
+        145.2,
+        145.2,
+        50.0
+      ],
+      "bbox_matches_design": true,
+      "skin_volume_cm3": 39.75,
+      "mass_solid_100pct_g": 81.0,
+      "mass_sliced_est_g": 55.1,
+      "bom_est_raw_g": 50.0,
+      "bom_counted_x1.15_g": 57.5,
+      "delta_vs_bom_raw_pct": 10.1,
+      "delta_vs_bom_counted_pct": -4.2,
+      "pappus_exact_volume_cm3": 63.825,
+      "mesh_vs_pappus_pct": -0.018,
+      "bore_d_mm": 129.0,
+      "exit_d_mm": 134.02,
+      "verified": true
+    },
+    {
+      "part": "duct_ring_gap1.5",
+      "file": "outputs/stl/duct_ring_5in_gap1.5mm.stl",
+      "material": "PETG",
+      "density_g_cm3": 1.27,
+      "triangles": 10308,
+      "shells": 2,
+      "all_shells_closed": true,
+      "all_shell_volumes_positive": true,
+      "degenerate_tris": 0,
+      "volume_cm3": 64.28699979411269,
+      "surface_area_cm2": 476.78006506992455,
+      "bbox_min_mm": [
+        -73.1,
+        -73.1,
+        0.0
+      ],
+      "bbox_max_mm": [
+        73.1,
+        73.1,
+        50.0
+      ],
+      "bbox_dims_mm": [
+        146.2,
+        146.2,
+        50.0
+      ],
+      "fits_bambu_p1s": true,
+      "expected_dims_mm": [
+        146.2,
+        146.2,
+        50.0
+      ],
+      "bbox_matches_design": true,
+      "skin_volume_cm3": 40.05,
+      "mass_solid_100pct_g": 81.6,
+      "mass_sliced_est_g": 55.5,
+      "bom_est_raw_g": 50.0,
+      "bom_counted_x1.15_g": 57.5,
+      "delta_vs_bom_raw_pct": 11.0,
+      "delta_vs_bom_counted_pct": -3.5,
+      "pappus_exact_volume_cm3": 64.298,
+      "mesh_vs_pappus_pct": -0.018,
+      "bore_d_mm": 130.0,
+      "exit_d_mm": 135.02,
+      "verified": true
+    },
+    {
+      "part": "duct_ring_gap2.0",
+      "file": "outputs/stl/duct_ring_5in_gap2.0mm.stl",
+      "material": "PETG",
+      "density_g_cm3": 1.27,
+      "triangles": 10308,
+      "shells": 2,
+      "all_shells_closed": true,
+      "all_shell_volumes_positive": true,
+      "degenerate_tris": 0,
+      "volume_cm3": 64.7604615426303,
+      "surface_area_cm2": 480.32897117110554,
+      "bbox_min_mm": [
+        -73.6,
+        -73.6,
+        0.0
+      ],
+      "bbox_max_mm": [
+        73.6,
+        73.6,
+        50.0
+      ],
+      "bbox_dims_mm": [
+        147.2,
+        147.2,
+        50.0
+      ],
+      "fits_bambu_p1s": true,
+      "expected_dims_mm": [
+        147.2,
+        147.2,
+        50.0
+      ],
+      "bbox_matches_design": true,
+      "skin_volume_cm3": 40.35,
+      "mass_solid_100pct_g": 82.2,
+      "mass_sliced_est_g": 55.9,
+      "bom_est_raw_g": 50.0,
+      "bom_counted_x1.15_g": 57.5,
+      "delta_vs_bom_raw_pct": 11.8,
+      "delta_vs_bom_counted_pct": -2.8,
+      "pappus_exact_volume_cm3": 64.772,
+      "mesh_vs_pappus_pct": -0.018,
+      "bore_d_mm": 131.0,
+      "exit_d_mm": 136.02,
+      "verified": true
+    },
+    {
+      "part": "grille",
+      "file": "outputs/stl/grille_5in_146mm_4mm.stl",
+      "material": "PLA",
+      "density_g_cm3": 1.24,
+      "triangles": 3276,
+      "shells": 1,
+      "all_shells_closed": true,
+      "all_shell_volumes_positive": true,
+      "degenerate_tris": 0,
+      "volume_cm3": 18.72719958496094,
+      "surface_area_cm2": 365.09199157714846,
+      "bbox_min_mm": [
+        -73.1,
+        -73.1,
+        0.0
+      ],
+      "bbox_max_mm": [
+        73.1,
+        73.1,
+        4.0
+      ],
+      "bbox_dims_mm": [
+        146.2,
+        146.2,
+        4.0
+      ],
+      "fits_bambu_p1s": true,
+      "expected_dims_mm": [
+        146.2,
+        146.2,
+        4.0
+      ],
+      "bbox_matches_design": true,
+      "skin_volume_cm3": 18.73,
+      "mass_solid_100pct_g": 23.2,
+      "mass_sliced_est_g": 23.2,
+      "bom_est_raw_g": 17.0,
+      "bom_counted_x1.15_g": 19.55,
+      "delta_vs_bom_raw_pct": 36.6,
+      "delta_vs_bom_counted_pct": 18.8,
+      "verified": true
+    },
+    {
+      "part": "enclosure_quarter",
+      "file": "outputs/stl/enclosure_quarter_5in_177mm.stl",
+      "material": "PLA",
+      "density_g_cm3": 1.24,
+      "triangles": 4760,
+      "shells": 14,
+      "all_shells_closed": true,
+      "all_shell_volumes_positive": true,
+      "degenerate_tris": 0,
+      "volume_cm3": 71.76447908612928,
+      "surface_area_cm2": 1560.2323200966043,
+      "bbox_min_mm": [
+        -0.0,
+        -0.0,
+        0.0
+      ],
+      "bbox_max_mm": [
+        176.5,
+        176.5,
+        100.0
+      ],
+      "bbox_dims_mm": [
+        176.5,
+        176.5,
+        100.0
+      ],
+      "fits_bambu_p1s": true,
+      "expected_dims_mm": [
+        176.5,
+        176.5,
+        100.0
+      ],
+      "bbox_matches_design": true,
+      "skin_volume_cm3": 71.76,
+      "mass_solid_100pct_g": 89.0,
+      "mass_sliced_est_g": 89.0,
+      "bom_est_raw_g": 69.25,
+      "bom_counted_x1.15_g": 79.64,
+      "delta_vs_bom_raw_pct": 28.5,
+      "delta_vs_bom_counted_pct": 11.7,
+      "verified": true
+    },
+    {
+      "part": "cross_spine_payload_bay",
+      "file": "outputs/stl/cross_spine_45mm_payload_bay.stl",
+      "material": "PLA",
+      "density_g_cm3": 1.24,
+      "triangles": 244,
+      "shells": 11,
+      "all_shells_closed": true,
+      "all_shell_volumes_positive": true,
+      "degenerate_tris": 0,
+      "volume_cm3": 39.024007203102094,
+      "surface_area_cm2": 574.9231894386293,
+      "bbox_min_mm": [
+        -125.0,
+        -125.0,
+        0.0
+      ],
+      "bbox_max_mm": [
+        125.0,
+        125.0,
+        30.0
+      ],
+      "bbox_dims_mm": [
+        250.0,
+        250.0,
+        30.0
+      ],
+      "fits_bambu_p1s": true,
+      "expected_dims_mm": [
+        250.0,
+        250.0,
+        30.0
+      ],
+      "bbox_matches_design": true,
+      "skin_volume_cm3": 39.02,
+      "mass_solid_100pct_g": 48.4,
+      "mass_sliced_est_g": 48.4,
+      "bom_est_raw_g": 30.0,
+      "bom_counted_x1.15_g": 34.5,
+      "delta_vs_bom_raw_pct": 61.3,
+      "delta_vs_bom_counted_pct": 40.3,
+      "verified": true
+    },
+    {
+      "part": "retractable_leg",
+      "file": "outputs/stl/retractable_leg_240mm.stl",
+      "material": "PLA",
+      "density_g_cm3": 1.24,
+      "triangles": 632,
+      "shells": 2,
+      "all_shells_closed": true,
+      "all_shell_volumes_positive": true,
+      "degenerate_tris": 0,
+      "volume_cm3": 34.88868037384466,
+      "surface_area_cm2": 147.15751313064345,
+      "bbox_min_mm": [
+        -8.0,
+        -50.0,
+        0.0
+      ],
+      "bbox_max_mm": [
+        240.0,
+        50.0,
+        12.0
+      ],
+      "bbox_dims_mm": [
+        248.0,
+        100.0,
+        12.0
+      ],
+      "fits_bambu_p1s": true,
+      "expected_dims_mm": [
+        248.0,
+        100.0,
+        12.0
+      ],
+      "bbox_matches_design": true,
+      "skin_volume_cm3": 12.36,
+      "mass_solid_100pct_g": 43.3,
+      "mass_sliced_est_g": 19.5,
+      "bom_est_raw_g": 25.0,
+      "bom_counted_x1.15_g": 28.75,
+      "delta_vs_bom_raw_pct": -21.9,
+      "delta_vs_bom_counted_pct": -32.1,
+      "centroid_from_pivot_mm": [
+        135.83,
+        -0.0,
+        4.13
+      ],
+      "verified": true
+    }
+  ],
+  "aircraft_rollup": {
+    "cad_sliced_total_g": 851.0,
+    "bom_raw_total_g": 693,
+    "bom_counted_total_g": 796.9,
+    "delta_vs_raw_pct": 22.8,
+    "delta_vs_counted_pct": 6.8
+  },
+  "all_verified": true
+}

@@ -20,7 +20,7 @@
   ],
   "battery_cells": null,
   "esc_cell_rating": null,
-  "flight_controller_board": null,
+  "flight_controller_board": "APM 2.x (USB shows as Arduino Mega 2560, VID 2341 PID 0010, COM7) - max firmware ArduCopter 3.2.1",
   "filament_on_hand": null,
   "_defaults": {
     "prop_diameter_mm": 127.0,

@@ -7,3 +7,6 @@ venv/
 .DS_Store
 Thumbs.db
 *.tmp
+outputs/test_rig/gcode/_profiles/
+outputs/test_rig/gcode/result.json
+*.3mf.bak

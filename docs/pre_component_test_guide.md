@@ -112,6 +112,22 @@ All prints use 0.2 mm layers, 2 walls and 15 % gyroid infill.
 | 6 | `grille_test_rig.stl` | PLA | 23.8 g | Square exit grille |
 | 7 | `open_riser.stl` | PLA | 7.0 g | Only used for the open-prop run |
 
+**Ready-to-print G-code** for a P1S with a 0.4 mm nozzle and the Textured PEI plate is in `outputs/test_rig/gcode/*.gcode.3mf`:
+
+| File | Print time | Filament |
+|---|---|---|
+| `fit_band` | 12 min | 8.5 g PETG |
+| `duct_test_rig` | 1 h 23 min | 52.1 g PETG |
+| `stand` | 4 h 44 min | 184.2 g PLA |
+| `motor_arm` | 29 min | 13.7 g PETG |
+| `inlet_grille` | 40 min | 17.2 g PLA |
+| `grille_test_rig` | 44 min | 21.1 g PLA |
+| `open_riser` | 20 min | 7.2 g PLA |
+
+To print one, open it in Bambu Studio (File → Open), check the preview, then click **Print plate**. Or copy it to the printer's SD card and start it from the printer screen.
+
+To regenerate them after changing the measurements, run `python src/cad/generate_test_rig.py`, then `python src/cad/slice_test_rig.py`.
+
 **Weigh every printed part** and write the masses down. The duct and grille masses check the flight mass model (Sync Gate C).
 
 ---

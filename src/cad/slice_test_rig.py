@@ -92,6 +92,9 @@ def main(argv=None) -> None:
     ap = argparse.ArgumentParser(description="Slice test-rig STLs for the Bambu P1S")
     ap.add_argument("--parts", default=",".join(PARTS))
     ap.add_argument("--bambu", default=str(BAMBU_EXE))
+    ap.add_argument("--material", choices=sorted(FILAMENT), default=None,
+                    help="force one filament for every part (e.g. PLA when no PETG is loaded); "
+                         "files get a _<MAT> suffix")
     args = ap.parse_args(argv)
 
     exe = Path(args.bambu)
@@ -109,12 +112,13 @@ def main(argv=None) -> None:
 
     for part in [p.strip() for p in args.parts.split(",") if p.strip()]:
         mat, extra = PARTS[part]
+        mat = args.material or mat
         stl = RIG_DIR / f"{part}.stl"
         if not stl.exists():
             print(f"{part}: {stl.name} missing - run src/cad/generate_test_rig.py first")
             continue
         proc = write_profile(base_process, {**COMMON, **extra}, work / f"process_{part}.json")
-        out = OUT_DIR / f"{part}.gcode.3mf"
+        out = OUT_DIR / (f"{part}_{mat}.gcode.3mf" if args.material else f"{part}.gcode.3mf")
         cmd = [str(exe), "--arrange", "1", "--orient", "0",
                "--load-settings", f"{machine};{proc}", "--load-filaments", str(filaments[mat]),
                "--slice", "0", "--export-3mf", str(out), str(stl)]

@@ -1,15 +1,15 @@
 {
   "_what": "Caliper measurements for the pre-component single-duct thrust rig. Replace each null with your value (mm unless stated), then run: python src/cad/generate_test_rig.py",
-  "_status": "PARTIAL - prop measured; other nulls fall back to _defaults and are flagged in the generator output",
+  "_status": "Measured 2026-11-04 on the A2217 test motor (square 11 mm hole pattern = 15.6 mm diagonal); scale platform still unmeasured",
   "prop_diameter_mm": 130.2,
   "_prop_diameter_how": "Tri-blade has no opposite tips: measure shaft-hole centre to EACH blade tip, take the largest, multiply by 2. Measured 2026-11-03: 65.1 mm per blade (shaft centre to tip) -> 130.2 mm",
   "tip_gap_mm": 1.5,
-  "motor_bolt_spacing_mm": null,
+  "motor_bolt_spacing_mm": 11.0,
   "_motor_bolt_spacing_how": "Centre-to-centre of two ADJACENT M3 holes under the motor (16 or 19 for most 28xx). Leave null to print slotted holes covering 16-19",
-  "motor_base_to_prop_seat_mm": null,
+  "motor_base_to_prop_seat_mm": 34.0,
   "_motor_base_to_prop_seat_how": "Flat underside of the motor to the face the prop hub rests on (prop adapter / bell top)",
-  "prop_hub_thickness_mm": null,
-  "motor_bell_diameter_mm": null,
+  "prop_hub_thickness_mm": 7.5,
+  "motor_bell_diameter_mm": 27.5,
   "motor_center_clearance_d_mm": 10.0,
   "_motor_center_clearance_how": "Diameter needed under the motor for the shaft end / circlip; increase if the shaft sticks out further",
   "inlet_clearance_mm": 150,
@@ -28,5 +28,6 @@
     "motor_base_to_prop_seat_mm": 30.0,
     "prop_hub_thickness_mm": 7.0,
     "motor_bell_diameter_mm": 34.0
-  }
+  },
+  "motor_shaft_d_mm": 4.0
 }

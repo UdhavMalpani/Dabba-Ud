@@ -2,26 +2,16 @@
   "measurements_used": {
     "prop_diameter_mm": 130.2,
     "tip_gap_mm": 1.5,
-    "motor_base_to_prop_seat_mm": 30.0,
-    "prop_hub_thickness_mm": 7.0,
-    "motor_bell_diameter_mm": 34.0,
+    "motor_base_to_prop_seat_mm": 34.0,
+    "prop_hub_thickness_mm": 7.5,
+    "motor_bell_diameter_mm": 27.5,
     "motor_center_clearance_d_mm": 10.0,
     "inlet_clearance_mm": 150.0,
-    "bolt_min": 16.0,
-    "bolt_max": 19.0,
-    "unmeasured": [
-      "motor_base_to_prop_seat_mm",
-      "prop_hub_thickness_mm",
-      "motor_bell_diameter_mm",
-      "motor_bolt_spacing_mm"
-    ]
+    "bolt_min": 11.0,
+    "bolt_max": 11.0,
+    "unmeasured": []
   },
-  "unmeasured_using_defaults": [
-    "motor_base_to_prop_seat_mm",
-    "prop_hub_thickness_mm",
-    "motor_bell_diameter_mm",
-    "motor_bolt_spacing_mm"
-  ],
+  "unmeasured_using_defaults": [],
   "geometry": {
     "bore_d_mm": 133.2,
     "duct_od_mm": 149.39999999999998,
@@ -31,7 +21,7 @@
       43.5
     ],
     "prop_plane_depth_below_exit_mm": 38.0,
-    "arm_underside_depth_below_exit_mm": 4.5,
+    "arm_underside_depth_below_exit_mm": 0.25,
     "motor_spacer_mm": 0.0,
     "motor_screw": "4 x M3x8 (into motor 3.0 mm; max 4)",
     "post_screws": "2 x M3x20 (arm -> post), self-tap into 2.6 mm pilots",
@@ -87,25 +77,25 @@
       "material": "PLA",
       "triangles": 2580,
       "closed_manifold": true,
-      "volume_cm3": 264.32,
-      "mass_est_g": 177.7,
+      "volume_cm3": 265.95,
+      "mass_est_g": 178.3,
       "bbox_mm": [
         193.0,
         186.0,
-        195.5
+        199.8
       ],
       "fits_p1s": true
     },
     {
       "file": "outputs/test_rig/motor_arm.stl",
       "material": "PETG",
-      "triangles": 1592,
+      "triangles": 1480,
       "closed_manifold": true,
-      "volume_cm3": 28.15,
-      "mass_est_g": 14.6,
+      "volume_cm3": 22.84,
+      "mass_est_g": 12.2,
       "bbox_mm": [
-        119.0,
-        38.0,
+        115.0,
+        30.0,
         12.0
       ],
       "fits_p1s": true

@@ -12,6 +12,8 @@ Everything below runs from this repo on a laptop. No hardware is needed.
 
 > **Status (31 Oct 2026):** none of the evidence here comes from hardware yet. The thrust-stand data and flight logs are **synthetic** (model-generated), and each one is labelled that way in the outputs. Every script also accepts real data; see [Feeding in real hardware data](#feeding-in-real-hardware-data).
 
+> **Branch `pre-component-test`:** a single-duct thrust rig you can print and run with the lab's spare motor, prop and ESC while the flight parts are on order. It measures the enclosure power penalty (assumed +20 %). Start with [`docs/pre_component_test_guide.md`](docs/pre_component_test_guide.md), then run `python src/cad/generate_test_rig.py` (rig STLs) and `python src/analysis/single_duct_trial_analyzer.py --csv <log>` (results).
+
 The full write-up is in [`report/Project8_Technical_Analysis_and_Validation.md`](report/Project8_Technical_Analysis_and_Validation.md). The open work is listed in [`NEXT_STEPS.md`](NEXT_STEPS.md).
 
 ---

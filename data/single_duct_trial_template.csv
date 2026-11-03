@@ -1,0 +1,7 @@
+# Single-duct trial log - copy this file, delete the example rows, fill one row per throttle step.
+# config: open_5in_3blade | duct_5in_gap1.5 | duct_5in_gap1.5_grilles   (names must start open_ / duct_, grille runs contain "grille")
+# pwm_us = 1000 + 10 x throttle_pct ; power_w = voltage_v x current_a (leave blank to auto-compute) ; rpm 0 if not measured
+config,tip_gap_mm,pwm_us,throttle_pct,thrust_g,voltage_v,current_a,power_w,rpm
+open_5in_3blade,,1200,20,0,0,0,,0
+duct_5in_gap1.5,1.5,1200,20,0,0,0,,0
+duct_5in_gap1.5_grilles,1.5,1200,20,0,0,0,,0

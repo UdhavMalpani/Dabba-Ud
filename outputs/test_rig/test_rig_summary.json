@@ -1,0 +1,150 @@
+{
+  "measurements_used": {
+    "prop_diameter_mm": 130.2,
+    "tip_gap_mm": 1.5,
+    "motor_base_to_prop_seat_mm": 30.0,
+    "prop_hub_thickness_mm": 7.0,
+    "motor_bell_diameter_mm": 34.0,
+    "motor_center_clearance_d_mm": 10.0,
+    "inlet_clearance_mm": 150.0,
+    "bolt_min": 16.0,
+    "bolt_max": 19.0,
+    "unmeasured": [
+      "motor_base_to_prop_seat_mm",
+      "prop_hub_thickness_mm",
+      "motor_bell_diameter_mm",
+      "motor_bolt_spacing_mm"
+    ]
+  },
+  "unmeasured_using_defaults": [
+    "motor_base_to_prop_seat_mm",
+    "prop_hub_thickness_mm",
+    "motor_bell_diameter_mm",
+    "motor_bolt_spacing_mm"
+  ],
+  "geometry": {
+    "bore_d_mm": 133.2,
+    "duct_od_mm": 149.39999999999998,
+    "exit_d_mm": 138.2176623905246,
+    "throat_depth_range_mm": [
+      35.0,
+      43.5
+    ],
+    "prop_plane_depth_below_exit_mm": 38.0,
+    "arm_underside_depth_below_exit_mm": 4.5,
+    "motor_spacer_mm": 0.0,
+    "motor_screw": "4 x M3x8 (into motor 3.0 mm; max 4)",
+    "post_screws": "2 x M3x20 (arm -> post), self-tap into 2.6 mm pilots",
+    "riser_screws": "1 x M3x16 (riser -> post) + the 2 x M3x20 arm screws",
+    "inlet_height_above_scale_mm": 150.0,
+    "prop_height_above_scale_mm": 162.0
+  },
+  "parts": [
+    {
+      "file": "outputs/test_rig/duct_test_rig.stl",
+      "material": "PETG",
+      "triangles": 10308,
+      "closed_manifold": true,
+      "volume_cm3": 65.8,
+      "mass_est_g": 56.8,
+      "bbox_mm": [
+        149.4,
+        149.4,
+        50.0
+      ],
+      "fits_p1s": true
+    },
+    {
+      "file": "outputs/test_rig/grille_test_rig.stl",
+      "material": "PLA",
+      "triangles": 3276,
+      "closed_manifold": true,
+      "volume_cm3": 19.16,
+      "mass_est_g": 23.8,
+      "bbox_mm": [
+        149.4,
+        149.4,
+        4.0
+      ],
+      "fits_p1s": true
+    },
+    {
+      "file": "outputs/test_rig/fit_band.stl",
+      "material": "PETG",
+      "triangles": 768,
+      "closed_manifold": true,
+      "volume_cm3": 6.79,
+      "mass_est_g": 8.6,
+      "bbox_mm": [
+        137.2,
+        137.2,
+        8.0
+      ],
+      "fits_p1s": true
+    },
+    {
+      "file": "outputs/test_rig/stand.stl",
+      "material": "PLA",
+      "triangles": 2580,
+      "closed_manifold": true,
+      "volume_cm3": 264.32,
+      "mass_est_g": 177.7,
+      "bbox_mm": [
+        193.0,
+        186.0,
+        195.5
+      ],
+      "fits_p1s": true
+    },
+    {
+      "file": "outputs/test_rig/motor_arm.stl",
+      "material": "PETG",
+      "triangles": 1592,
+      "closed_manifold": true,
+      "volume_cm3": 28.15,
+      "mass_est_g": 14.6,
+      "bbox_mm": [
+        119.0,
+        38.0,
+        12.0
+      ],
+      "fits_p1s": true
+    },
+    {
+      "file": "outputs/test_rig/open_riser.stl",
+      "material": "PLA",
+      "triangles": 624,
+      "closed_manifold": true,
+      "volume_cm3": 14.12,
+      "mass_est_g": 7.0,
+      "bbox_mm": [
+        24.0,
+        16.0,
+        44.0
+      ],
+      "fits_p1s": true
+    },
+    {
+      "file": "outputs/test_rig/inlet_grille.stl",
+      "material": "PLA",
+      "triangles": 4012,
+      "closed_manifold": true,
+      "volume_cm3": 15.58,
+      "mass_est_g": 19.3,
+      "bbox_mm": [
+        149.2,
+        149.2,
+        4.0
+      ],
+      "fits_p1s": true
+    }
+  ],
+  "checks": {
+    "prop_plane_inside_straight_throat": true,
+    "tip_gap_ge_1mm": true,
+    "bell_clears_bore": true,
+    "all_parts_closed": true,
+    "all_parts_fit_p1s": true,
+    "openscad_parts_built": true
+  }
+}

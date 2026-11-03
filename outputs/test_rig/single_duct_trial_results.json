@@ -1,0 +1,40 @@
+{
+  "source": [
+    "C:\\Users\\udhav\\UAV-Design\\outputs\\test_rig\\single_duct_trial_DEMO_synthetic.csv"
+  ],
+  "synthetic": true,
+  "prop_d_mm": 130.2,
+  "rho": 1.09,
+  "basis": "equal electrical power",
+  "configs": {
+    "open_5in_3blade": {
+      "kind": "open",
+      "points": 6,
+      "max_thrust_g": 487.0,
+      "k_g_per_W23": 18.026054601480443,
+      "fm_disc_mean": 0.5452548149176618,
+      "g_per_W_at_max": 3.4785714285714286
+    },
+    "duct_5in_gap1.5": {
+      "kind": "duct",
+      "points": 6,
+      "max_thrust_g": 515.0,
+      "k_g_per_W23": 19.291132370063796,
+      "fm_disc_mean": 0.5994536010378667,
+      "g_per_W_at_max": 3.6785714285714284,
+      "thrust_ratio_vs_open_equal_power": 1.07,
+      "power_penalty_vs_open_equal_thrust": -0.097
+    },
+    "duct_5in_gap1.5_grilles": {
+      "kind": "duct_grilles",
+      "points": 6,
+      "max_thrust_g": 428.0,
+      "k_g_per_W23": 15.91445778737066,
+      "fm_disc_mean": 0.4503242053285031,
+      "g_per_W_at_max": 3.057142857142857,
+      "thrust_ratio_vs_open_equal_power": 0.883,
+      "power_penalty_vs_open_equal_thrust": 0.205
+    }
+  },
+  "verdict": "Measured enclosure power penalty +20.5 % vs design assumption +20 %: WORSE than assumed - re-run sizing with this penalty"
+}
